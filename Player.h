@@ -18,9 +18,6 @@ public:
 	/// </summary>
 	void Draw();
 
-	//‰Šú‰»
-	void Setup();
-
 private:
 	//PlayerÀ•W
 	float PosX_;
@@ -31,7 +28,3 @@ private:
 	//‘Ì—Í
 	int HP_;
 };
-
-//Player::Player() {}
-//
-//Player::~Player() {}
