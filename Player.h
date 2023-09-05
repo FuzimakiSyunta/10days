@@ -18,10 +18,18 @@ public:
 	/// </summary>
 	void Draw();
 
-private:
-	
-	
+	//‰Šú‰»
+	void Setup();
 
+private:
+	//PlayerÀ•W
+	float PosX_;
+	float PosY_;
+	//Player”¼Œa
+	int W_;
+	int H_;
+	//‘Ì—Í
+	int HP_;
 };
 
 Player::Player() {}
