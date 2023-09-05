@@ -31,7 +31,3 @@ private:
 	//‘Ì—Í
 	int HP_;
 };
-
-Player::Player() {}
-
-Player::~Player() {}
