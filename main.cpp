@@ -1,13 +1,21 @@
-#include <Novice.h>
+﻿#include <Novice.h>
 #include"Player.h"
 
-const char kWindowTitle[] = "LE2C_24_フジマキシュンタ";
+const char kWindowTitle[] = "10days";
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
-	Novice::Initialize(kWindowTitle, 1280, 720);
+	Novice::Initialize(kWindowTitle, 1270, 720);
+#pragma region 自機の変数
+	Player* player = new Player;
+	player->SetX(605);
+	player->SetY(330);
+	player->SetW(30);
+	player->SetH(30);
+	player->SetHP(5);
+#pragma endregion
 
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
@@ -25,7 +33,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓更新処理ここから
 		///
+#pragma region 自機の更新(Itemとの当たり判定もここに)
+		player->Update();
 
+#pragma endregion
 		///
 		/// ↑更新処理ここまで
 		///
@@ -33,6 +44,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
+		player->Draw();//Player描画
 
 		///
 		/// ↑描画処理ここまで

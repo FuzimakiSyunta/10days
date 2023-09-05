@@ -25,6 +25,3 @@ private:
 
 };
 
-Enemy::Enemy() {}
-
-Enemy::~Enemy() {}
