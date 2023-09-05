@@ -32,6 +32,6 @@ private:
 	int HP_;
 };
 
-Player::Player() {}
-
-Player::~Player() {}
+//Player::Player() {}
+//
+//Player::~Player() {}
