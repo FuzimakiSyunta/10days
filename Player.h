@@ -1,30 +1,43 @@
-#include "Novice.h"
+ï»¿#include "Novice.h"
 
 class Player {
 public:
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Initialize();
 
 	/// <summary>
-	/// ©ƒLƒƒƒ‰
-	/// XV
+	/// è‡ªã‚­ãƒ£ãƒ©
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// •`‰æ
+	/// æç”»
 	/// </summary>
 	void Draw();
 
+
+	int GetX();
+	int GetY();
+	int GetW();
+	int GetH();
+	int GetHP();
+
+	void SetX(int PosX_);
+	void SetY(int PosY_);
+	void SetW(int W_);
+	void SetH(int H_);
+	void SetHP(int HP_);
+
 private:
-	//PlayerÀ•W
+	//Playeråº§æ¨™
 	float PosX_;
 	float PosY_;
-	//Player”¼Œa
+	//PlayeråŠå¾„
 	int W_;
 	int H_;
-	//‘Ì—Í
+	//ä½“åŠ›
 	int HP_;
 };
