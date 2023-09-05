@@ -19,7 +19,7 @@ public:
 	void Draw();
 
 private:
-	
+	struct  {};
 	
 
 };
