@@ -18,13 +18,6 @@ public:
 	/// </summary>
 	void Draw();
 
-
-	int GetX();
-	int GetY();
-	int GetW();
-	int GetH();
-	int GetHP();
-
 	void SetX(int PosX_);
 	void SetY(int PosY_);
 	void SetW(int W_);

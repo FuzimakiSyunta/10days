@@ -10,8 +10,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Novice::Initialize(kWindowTitle, 1270, 720);
 #pragma region 自機の変数
 	Player* player = new Player;
-	player->SetX(605);
-	player->SetY(330);
+	player->SetX(605.0f);
+	player->SetY(330.0f);
 	player->SetW(30);
 	player->SetH(30);
 	player->SetHP(5);
