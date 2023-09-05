@@ -18,9 +18,6 @@ public:
 	/// </summary>
 	void Draw();
 
-	//‰Šú‰»
-	void Setup();
-
 private:
 	//PlayerÀ•W
 	float PosX_;
