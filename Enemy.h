@@ -21,10 +21,8 @@ public:
 
 private:
 
-	
+	int posX;
+	int posY;
+	int speed;
 
 };
-
-Enemy::Enemy() {}
-
-Enemy::~Enemy() {}
