@@ -1,5 +1,6 @@
 ﻿#include <Novice.h>
 #include"Player.h"
+#include"Enemy.h"
 
 const char kWindowTitle[] = "10days";
 
@@ -16,6 +17,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	player->SetW(80);
 	player->SetH(80);
 	player->SetHP(5);
+#pragma endregion
+
+#pragma region 敵の変数
+	Enemy* enemy = new Enemy;
+	enemy->SetX(605.0f);
+	enemy->SetY(0.0f);
+	enemy->SetSpeed(1.0f);
 #pragma endregion
 
 	// キー入力結果を受け取る箱
@@ -38,6 +46,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player->Update();
 
 #pragma endregion
+
+#pragma region 敵の更新
+		enemy->Update();
+
+
+#pragma endregion
+
 		///
 		/// ↑更新処理ここまで
 		///
@@ -46,6 +61,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓描画処理ここから
 		///
 		player->Draw();//Player描画
+		enemy->Draw();//Enemy描画
 
 #pragma region デバックコード
 		Novice::ScreenPrintf(0, 20, "%d,%d", player->GetX(), player->GetY());
