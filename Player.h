@@ -18,6 +18,14 @@ public:
 	/// </summary>
 	void Draw();
 
+	//ゲッター
+	int GetX() { return PosX_; };
+	int GetY() { return PosY_; };
+	int GetW() { return W_; };
+	int GetH() { return H_; };
+	int GetHP() { return HP_; };
+
+	//セッタ－
 	void SetX(int PosX_);
 	void SetY(int PosY_);
 	void SetW(int W_);
