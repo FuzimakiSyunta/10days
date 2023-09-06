@@ -19,10 +19,14 @@ public:
 	/// </summary>
 	void Draw();
 
+	void SetX(int PosX_);
+	void SetY(int PosY_);
+	void SetSpeed(int Speed_);
+
 private:
 
-	int posX;
-	int posY;
-	int speed;
+	int PosX_;
+	int PosY_;
+	int Speed_;
 
 };
