@@ -9,12 +9,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1270, 720);
+	
 #pragma region 自機の変数
 	Player* player = new Player;
-	player->SetX(605.0f);
-	player->SetY(330.0f);
-	player->SetW(30);
-	player->SetH(30);
+	player->SetX(595.0f);
+	player->SetY(480.0f);
+	player->SetW(80);
+	player->SetH(80);
 	player->SetHP(5);
 #pragma endregion
 
@@ -61,6 +62,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		player->Draw();//Player描画
 		enemy->Draw();//Enemy描画
+
+#pragma region デバックコード
+		Novice::ScreenPrintf(0, 20, "%d,%d", player->GetX(), player->GetY());
+#pragma endregion
 
 		///
 		/// ↑描画処理ここまで

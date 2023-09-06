@@ -15,12 +15,10 @@ void Player::Update()
 void Player::Draw() 
 { 
 	Novice::DrawBox(PosX_, PosY_, W_, H_, 0.0f, WHITE, kFillModeSolid);
-
-	Novice::ScreenPrintf(0, 20, "%d,%d",PosX_,PosY_);
 }
 
 
-//ゲッターとセッター
+//セッター
 void Player::SetX(int PosX_) { this->PosX_ = PosX_; }
 
 void Player::SetY(int PosY_) { this->PosY_ = PosY_; }
