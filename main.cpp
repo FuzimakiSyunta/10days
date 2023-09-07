@@ -20,8 +20,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	for (int i = 0; i < Players; i++) {
 		player[i]->SetX(880.0f);
 		player[i]->SetY(480.0f);
-		player[i]->SetW(80);
-		player[i]->SetH(80);
+		player[i]->SetW(1);
+		player[i]->SetH(1);
 	}
 	struct MoveFrag //陣フラグ構造体 
 	{

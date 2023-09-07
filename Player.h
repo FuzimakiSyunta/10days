@@ -45,6 +45,7 @@ private:
 	// Player半径
 	int W_;
 	int H_;
-	
+	//写真
+	int Ship_= Novice::LoadTexture("./Resource./Ship.png");
 	
 };

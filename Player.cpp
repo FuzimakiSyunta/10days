@@ -14,13 +14,13 @@ void Player::MoveUpdate()//陣1
 	PosX_[0] = 920.0f;//真ん中
 	PosY_[0] = 700.0f;
 
-	PosX_[1] = 920.0f;//左1
-	PosY_[1] = 590.0f;
+	PosX_[1] = 728.0f;//左1
+	PosY_[1] = 810.0f;
 
 	PosX_[4] = 540.0f;//左2
 	PosY_[4] = 700.0f;
 	
-	PosX_[2] = 920.0f;//右1
+	PosX_[2] = 1112.0f;//右1
 	PosY_[2] = 810.0f;
 
 	PosX_[3] = 1300.0f;//右2
@@ -67,11 +67,11 @@ void Player::ThirdMoveUpdate()//陣3
 
 void Player::Draw() 
 { 
-	Novice::DrawBox(PosX_[0], PosY_[0], W_, H_, 0.0f, WHITE, kFillModeSolid);
-	Novice::DrawBox(PosX_[1], PosY_[1], W_, H_, 0.0f, WHITE, kFillModeSolid);
-	Novice::DrawBox(PosX_[2], PosY_[2], W_, H_, 0.0f, WHITE, kFillModeSolid);
-	Novice::DrawBox(PosX_[3], PosY_[3], W_, H_, 0.0f, WHITE, kFillModeSolid);
-	Novice::DrawBox(PosX_[4], PosY_[4], W_, H_, 0.0f, WHITE, kFillModeSolid);
+	Novice::DrawSprite(PosX_[0],PosY_[0],Ship_,W_,H_,0.0f,WHITE);
+	Novice::DrawSprite(PosX_[1], PosY_[1], Ship_, W_, H_, 0.0f, WHITE);
+	Novice::DrawSprite(PosX_[2], PosY_[2], Ship_, W_, H_, 0.0f, WHITE);
+	Novice::DrawSprite(PosX_[3], PosY_[3], Ship_, W_, H_, 0.0f, WHITE);
+	Novice::DrawSprite(PosX_[4], PosY_[4], Ship_, W_, H_, 0.0f, WHITE);
 }
 
 
