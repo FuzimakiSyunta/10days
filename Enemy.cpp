@@ -1,24 +1,50 @@
 #include "Enemy.h"
+#include<Novice.h>
 
 void Enemy::Initialize() {
-	
-}
+	PosY_ = 0;
+};
 
 void Enemy::Update() {
 	PosY_ += Speed_;
 	if (PosY_ >= 250) {
-		PosY_ = 0;
+		PosY_ = 250;
 	}
 }
 
 void Enemy::Draw(){
-	Novice::DrawBox(
+	//ê^ÇÒíÜ
+	Novice::DrawSprite(
 		PosX_, PosY_,
-		50, 50,
+		Shark_,
+		1.0f, 1.0f,
 		0.0f,
-		BLACK,
-		kFillModeSolid
+		WHITE
 	);
+	//ç∂
+	Novice::DrawSprite(
+		PosX_-200, PosY_,
+		Shark_,
+		1.0f, 1.0f,
+		0.0f,
+		WHITE
+	);
+	//âE
+	Novice::DrawSprite(
+		PosX_+200, PosY_,
+		Shark_,
+		1.0f, 1.0f,
+		0.0f,
+		WHITE
+	);
+
+	//Novice::DrawBox(
+	//	PosX_, PosY_,
+	//	50, 50,
+	//	0.0f,
+	//	BLACK,
+	//	kFillModeSolid
+	//);
 
 	Novice::ScreenPrintf(0, 40, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_, PosY_,Speed_);
 }

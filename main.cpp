@@ -9,7 +9,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1270, 720);
-	
+
 #pragma region 自機の変数
 	Player* player = new Player;
 	player->SetX(595.0f);
@@ -21,9 +21,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma region 敵の変数
 	Enemy* enemy = new Enemy;
-	enemy->SetX(605.0f);
+	enemy->SetX(575.0f);
 	enemy->SetY(0.0f);
-	enemy->SetSpeed(1.0f);
+	enemy->SetSpeed(5.0f);
 #pragma endregion
 
 #pragma region シーン
@@ -62,6 +62,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 0://タイトル
 			if (GameScene.scene == 0) {
 				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+					enemy->Initialize();
 					GameScene.scene = 1;
 
 					break;
