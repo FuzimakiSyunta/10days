@@ -22,7 +22,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetW(80);
 		player[i]->SetH(80);
 	}
-	
+	struct MoveFrag //陣フラグ構造体 
+	{
+		int Move1;
+		int Move2;
+		int Move3;
+	};
+	MoveFrag moveFrag{
+	    false,
+	    false,
+	    false,
+	};
 	//delete player;
 
 #pragma endregion
@@ -99,6 +109,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 1: // ゲーム中
 #pragma region シーン変更
 			if (GameScene.scene == 1) {
+
+
+
+
+
 				//敵戦闘とアイテム選択シーンの切り替え
 				if (GamePhase.phase == 0) {
 					///敵の生存フラグがfalseになったらアイテム選択フェーズに移動する////
@@ -134,9 +149,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					break;
 				}
 #pragma endregion
-#pragma region 自機の更新(Itemとの当たり判定もここに)
-				for (int i = 0; i < Players; i++) {
-					player[0]->Update();
+#pragma region 自機の陣形変更
+				if (Novice::IsTriggerButton(0, kPadButton2)) {
+					for (int i = 0; i < 5; i++) {
+						player[i]->MoveUpdate();
+					}
 				}
 
 #pragma endregion
@@ -146,7 +163,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma endregion
 				break;
-			   }
+			  }
 		}
 
 
@@ -165,15 +182,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			for (int i = 0; i < Players; i++) {
 				player[i]->Draw(); // Player描画
 			}
+		
+
 			enemy->Draw();  // Enemy描画
 			break;
 			
 		}
 
 #pragma region デバックコード
-		for (int i = 0; i < Players; i++) {
+		
 			Novice::ScreenPrintf(0, 20, "%d,%d", player[0]->GetX(), player[0]->GetY());
-		}
+			Novice::ScreenPrintf(0, 100, "%d,%d", player[1]->GetX(), player[1]->GetY());
+			Novice::ScreenPrintf(0, 120, "%d,%d", player[2]->GetX(), player[2]->GetY());
+		
 		Novice::ScreenPrintf(0, 40, "%d,%d",GameScene.scene);
 		Novice::ScreenPrintf(0, 90, "%d", playerHP);
 #pragma endregion

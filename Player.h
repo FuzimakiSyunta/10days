@@ -12,7 +12,11 @@ public:
 	/// 自キャラ
 	/// 更新
 	/// </summary>
-	void Update();
+	void MoveUpdate();
+
+	void SecondMoveUpdate();
+
+	void ThirdMoveUpdate();
 
 
 	/// <summary>
@@ -21,8 +25,8 @@ public:
 	void Draw();
 
 	//ゲッター
-	int GetX() { return PosX_; };
-	int GetY() { return PosY_; };
+	int GetX() { return PosX_[5]; };
+	int GetY() { return PosY_[5]; };
 	int GetW() { return W_; };
 	int GetH() { return H_; };
 	
@@ -36,8 +40,8 @@ public:
 
 private:
 	// Player座標
-	float PosX_;
-	float PosY_;
+	float PosX_[5];
+	float PosY_[5];
 	// Player半径
 	int W_;
 	int H_;
