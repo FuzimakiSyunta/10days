@@ -21,22 +21,22 @@ void Enemy::Draw(){
 		0.0f,
 		WHITE
 	);
-	//左
-	Novice::DrawSprite(
-		PosX_-200, PosY_,
-		Shark_,
-		1.0f, 1.0f,
-		0.0f,
-		WHITE
-	);
-	//右
-	Novice::DrawSprite(
-		PosX_+200, PosY_,
-		Shark_,
-		1.0f, 1.0f,
-		0.0f,
-		WHITE
-	);
+	////左
+	//Novice::DrawSprite(
+	//	PosX_-200, PosY_,
+	//	Shark_,
+	//	1.0f, 1.0f,
+	//	0.0f,
+	//	WHITE
+	//);
+	////右
+	//Novice::DrawSprite(
+	//	PosX_+200, PosY_,
+	//	Shark_,
+	//	1.0f, 1.0f,
+	//	0.0f,
+	//	WHITE
+	//);
 
 	//Novice::DrawBox(
 	//	PosX_, PosY_,
@@ -46,7 +46,7 @@ void Enemy::Draw(){
 	//	kFillModeSolid
 	//);
 
-	Novice::ScreenPrintf(0, 40, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_, PosY_,Speed_);
+	Novice::ScreenPrintf(0, 60, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_, PosY_,Speed_);
 }
 
 //ゲッターとセッター
