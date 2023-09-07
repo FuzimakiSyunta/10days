@@ -21,22 +21,22 @@ void Enemy::Draw(){
 		0.0f,
 		WHITE
 	);
-	////ç∂
-	//Novice::DrawSprite(
-	//	PosX_-200, PosY_,
-	//	Shark_,
-	//	1.0f, 1.0f,
-	//	0.0f,
-	//	WHITE
-	//);
-	////âE
-	//Novice::DrawSprite(
-	//	PosX_+200, PosY_,
-	//	Shark_,
-	//	1.0f, 1.0f,
-	//	0.0f,
-	//	WHITE
-	//);
+	//ç∂
+	Novice::DrawSprite(
+		PosX_-200, PosY_,
+		Shark_,
+		1.0f, 1.0f,
+		0.0f,
+		WHITE
+	);
+	//âE
+	Novice::DrawSprite(
+		PosX_+200, PosY_,
+		Shark_,
+		1.0f, 1.0f,
+		0.0f,
+		WHITE
+	);
 
 	//Novice::DrawBox(
 	//	PosX_, PosY_,
