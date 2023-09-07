@@ -46,7 +46,7 @@ void Enemy::Draw(){
 	//	kFillModeSolid
 	//);
 
-	Novice::ScreenPrintf(0, 40, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_, PosY_,Speed_);
+	Novice::ScreenPrintf(0, 60, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_, PosY_,Speed_);
 }
 
 //ゲッターとセッター
