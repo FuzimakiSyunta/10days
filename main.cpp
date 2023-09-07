@@ -1,6 +1,7 @@
 ﻿#include <Novice.h>
 #include"Player.h"
 #include"Enemy.h"
+#include "Item.h"
 
 const char kWindowTitle[] = "10days";
 
@@ -25,6 +26,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	enemy->SetY(0.0f);
 	enemy->SetSpeed(5.0f);
 #pragma endregion
+
+#pragma region アイテムの変数
+
+	Item* item = new Item;
+	item->SetItemNum(0);
+
+#pragma endregion
+
 
 #pragma region シーン
 	struct Scene {
@@ -85,6 +94,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					
 					////////////////アイテムを選択したら敵戦闘フェーズに移行する////////
 
+					item->Update();
+
+					if (item->GetItemNum() == 1) {
+						///自機のHPが1回復する処理
+					}
+					if (item->GetItemNum() == 2) {
+						//処理
+					}
+					if (item->GetItemNum() == 3) {
+						//処理
+					}
 
 					////////////////////////////////////////////////////////////////////
 				}
