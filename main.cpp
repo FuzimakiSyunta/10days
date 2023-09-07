@@ -15,7 +15,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma region 自機の変数
 	const int Players = 5;
 	Player* player[Players] = {
-	    new Player, new Player, new Player, new Player, new Player}; // int nums[6];
+	    new Player, new Player, new Player, new Player, new Player};
 	
 	for (int i = 0; i < Players; i++) {
 		player[i]->SetX(880.0f);
