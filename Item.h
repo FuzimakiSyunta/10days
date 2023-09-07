@@ -23,10 +23,10 @@ public:
     void Draw();
 
     ///ゲッター
-    int GetItemFaze() { return isItemFaze_; };
+	int GetItemPhase() { return isItemPhase_; };
 
     ///セッター
-	void SetItemFaze(int isItemFaze__);
+	void SetItemPhase(int isItemPhase__);
 
 private:
     //アイテムの座標
@@ -44,5 +44,5 @@ private:
     int ItemSpeed;
 
     ///アイテムフェーズに入ってるかどうか
-    int isItemFaze_;
+	int isItemPhase_;
 };

@@ -32,13 +32,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		int Game;
 		// シーン用関数
 		int scene;
+		int phase;
 	};
 	Scene GameScene{
 	    0, // タイトル
 	    1, // ゲーム画面
 	    0, // シーン
 	};
-
+	Scene GamePhase{
+	    0, // 敵戦闘シーン
+	    1, // アイテム選択画面
+	    2. // ゴールシーン
+	};
 
 #pragma endregion
 
@@ -70,6 +75,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		case 1://ゲーム中
 			if (GameScene.scene == 1) {
+				//敵戦闘とアイテム選択シーンの切り替え
+				if (GamePhase.phase == 0) {
+					///敵の生存フラグがfalseになったらアイテム選択フェーズに移動する////
+
+					
+					////////////////////////////////////////////////////////////////////
+					
+					////////////////アイテムを選択したら敵戦闘フェーズに移行する////////
+
+					if ()
+
+					////////////////////////////////////////////////////////////////////
+				}
 				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
 					GameScene.scene = 0;
 
