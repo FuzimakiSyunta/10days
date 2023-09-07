@@ -15,6 +15,7 @@ void Player::Update()
 void Player::Draw() 
 { 
 	Novice::DrawBox(PosX_, PosY_, W_, H_, 0.0f, WHITE, kFillModeSolid);
+
 }
 
 

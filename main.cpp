@@ -26,6 +26,22 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	enemy->SetSpeed(1.0f);
 #pragma endregion
 
+#pragma region シーン
+	struct Scene {
+		int Title;
+		int Game;
+		// シーン用関数
+		int scene;
+	};
+	Scene GameScene{
+	    0, // タイトル
+	    1, // ゲーム画面
+	    0, // シーン
+	};
+
+
+#pragma endregion
+
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
 	char preKeys[256] = {0};
@@ -41,17 +57,38 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		///
 		/// ↓更新処理ここから
-		///
+		switch (GameScene.scene) 
+		{ 
+		case 0://タイトル
+			if (GameScene.scene == 0) {
+				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+					GameScene.scene = 1;
+
+					break;
+				}
+			}
+			break;
+		case 1://ゲーム中
+			if (GameScene.scene == 1) {
+				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+					GameScene.scene = 0;
+
+					break;
+				}
+			}
 #pragma region 自機の更新(Itemとの当たり判定もここに)
-		player->Update();
+			player->Update();
 
 #pragma endregion
 
 #pragma region 敵の更新
-		enemy->Update();
-
+			enemy->Update();
 
 #pragma endregion
+			break;
+
+		}
+
 
 		///
 		/// ↑更新処理ここまで
@@ -60,11 +97,20 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
-		player->Draw();//Player描画
-		enemy->Draw();//Enemy描画
+		switch (GameScene.scene) {
+		case 0:             // タイトル
+			
+			break;
+		case 1:
+			player->Draw(); // Player描画
+			enemy->Draw();  // Enemy描画
+			break;
+			
+		}
 
 #pragma region デバックコード
 		Novice::ScreenPrintf(0, 20, "%d,%d", player->GetX(), player->GetY());
+		Novice::ScreenPrintf(0, 40, "%d,%d",GameScene.scene);
 #pragma endregion
 
 		///
