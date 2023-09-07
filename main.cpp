@@ -213,8 +213,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				player[i]->Draw(); // Player描画
 			}
 		
-
-			enemy->Draw();  // Enemy描画
+			for (int i = 0; i < Enemys; i++) {
+				enemy[i]->Draw();  // Enemy描画
+			}
 			///進行度バーの描画
 			Novice::DrawBox(1100, 585 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
 			Novice::DrawBox(1100, 135, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
