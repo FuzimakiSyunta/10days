@@ -62,6 +62,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	};
 
 #pragma endregion
+	int playerHP = 3;
 
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
@@ -102,21 +103,27 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				if (GamePhase.phase == 0) {
 					///敵の生存フラグがfalseになったらアイテム選択フェーズに移動する////
 
+					if (keys[DIK_RETURN] && preKeys[DIK_RETURN] == 0) {
+						GamePhase.phase = 1;
+					}
 					
 					////////////////////////////////////////////////////////////////////
-					
-					////////////////アイテムを選択したら敵戦闘フェーズに移行する////////
+				}
+				if (GamePhase.phase == 1) {
+					////////////////アイテムを選択するフェーズの処理////////////////////
 
-					item->Update();
-
-					if (item->GetItemNum() == 1) {
-						///自機のHPが1回復する処理
+					if (keys[DIK_UP] && preKeys[DIK_UP] == 0) {
+						/// 自機のHPが1回復する処理
+						if (playerHP < 5) {
+							playerHP += 1;
+						}
+						GamePhase.phase = 0;
 					}
 					if (item->GetItemNum() == 2) {
-						//処理
+						// 次の入力待機時間が少し長くなる処理
 					}
 					if (item->GetItemNum() == 3) {
-						//処理
+						// 処理
 					}
 
 					////////////////////////////////////////////////////////////////////
@@ -168,6 +175,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::ScreenPrintf(0, 20, "%d,%d", player[0]->GetX(), player[0]->GetY());
 		}
 		Novice::ScreenPrintf(0, 40, "%d,%d",GameScene.scene);
+		Novice::ScreenPrintf(0, 90, "%d", playerHP);
 #pragma endregion
 
 		///
