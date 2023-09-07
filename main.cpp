@@ -9,7 +9,8 @@ const char kWindowTitle[] = "10days";
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
-	Novice::Initialize(kWindowTitle, 1270, 720);
+	Novice::Initialize(kWindowTitle, 1920, 1080);
+	Novice::SetWindowMode(kFullscreen);
 
 #pragma region 自機の変数
 	const int Players = 5;
@@ -17,7 +18,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	    new Player, new Player, new Player, new Player, new Player}; // int nums[6];
 	
 	for (int i = 0; i < Players; i++) {
-		player[i]->SetX(595.0f);
+		player[i]->SetX(880.0f);
 		player[i]->SetY(480.0f);
 		player[i]->SetW(80);
 		player[i]->SetH(80);
@@ -168,6 +169,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				if (Novice::IsTriggerButton(0, kPadButton2)) {
 					for (int i = 0; i < 5; i++) {
 						player[i]->MoveUpdate();
+					}
+				}
+				if (Novice::IsTriggerButton(0, kPadButton3)) {
+					for (int i = 0; i < 5; i++) {
+						player[i]->SecondMoveUpdate();
+					}
+				}
+				if (Novice::IsTriggerButton(0, kPadButton0)) {
+					for (int i = 0; i < 5; i++) {
+						player[i]->ThirdMoveUpdate();
 					}
 				}
 
