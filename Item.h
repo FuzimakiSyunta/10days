@@ -23,26 +23,14 @@ public:
     void Draw();
 
     ///ゲッター
-	int GetItemPhase() { return isItemPhase_; };
+	int GetItemNum() { return ItemNum_; };
 
     ///セッター
-	void SetItemPhase(int isItemPhase__);
+	void SetItemNum(int ItemNum__);
 
 private:
-    //アイテムの座標
-    float PosX;
-    float PosY;
 
-    //アイテム当たり判定のサイズ
-    int W;
-    int H;
-
-    //アイテムの種類
+    //取得したアイテムの種類（効果発動中のアイテムの種類）
     int ItemNum_;
 
-    //アイテムの移動スピード
-    int ItemSpeed;
-
-    ///アイテムフェーズに入ってるかどうか
-	int isItemPhase_;
 };
