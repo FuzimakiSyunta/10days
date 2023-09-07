@@ -25,8 +25,10 @@ public:
 
 private:
 
-	int PosX_;
-	int PosY_;
+	float PosX_[5];
+	float PosY_[5];
 	int Speed_;
 	int Shark_ = Novice::LoadTexture("./Resource./Shark.png");
+	int frame_;
+	int timer_;
 };

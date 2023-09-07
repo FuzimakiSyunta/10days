@@ -38,10 +38,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma endregion
 
 #pragma region 敵の変数
-	Enemy* enemy = new Enemy;
-	enemy->SetX(575.0f);
-	enemy->SetY(0.0f);
-	enemy->SetSpeed(5.0f);
+	const int Enemys = 5;
+	Enemy* enemy[Enemys] = { new Enemy,new Enemy ,new Enemy ,new Enemy ,new Enemy };
+
+	for (int i = 0; i < Enemys; i++) {
+		enemy[i]->SetX(575.0f);
+		enemy[i]->SetY(0.0f);
+		enemy[i]->SetSpeed(5);
+	}
+	
 #pragma endregion
 
 #pragma region アイテムの変数
@@ -93,7 +98,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma region シーン変更
 			if (GameScene.scene == 0) {
 				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
-					enemy->Initialize();
+					for (int i = 0; i < Enemys; i++) {
+						enemy[i]->Initialize();
+					}
+					
 					GameScene.scene = 1;
 
 					break;
@@ -152,7 +160,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma endregion
 
 #pragma region 敵の更新
-				enemy->Update();
+				for (int i = 0; i < Enemys; i++) {
+					enemy[i]->Update();
+				}
+				
 
 #pragma endregion
 				break;
@@ -176,8 +187,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				player[i]->Draw(); // Player描画
 			}
 		
-
-			enemy->Draw();  // Enemy描画
+			for (int i = 0; i < Enemys; i++) {
+				enemy[i]->Draw();  // Enemy描画
+			}
+			
 			break;
 			
 		}
