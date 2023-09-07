@@ -2,28 +2,28 @@
 #include "Novice.h"
 
 
-void Player::Initialize() { 
+void Player::Initialize() {
 	for (int i = 0; i < 5; i++) {
-		PosX_[i] = 920.0f;
+		PosX_[i] = 870.0f;
 		PosY_[i] = 700.0f;
 	}
-	
+
 }
 void Player::MoveUpdate()//陣1
 {
-	PosX_[0] = 920.0f;//真ん中
+	PosX_[0] = 870.0f;//真ん中
 	PosY_[0] = 700.0f;
 
-	PosX_[1] = 728.0f;//左1
+	PosX_[1] = 678.0f;//左1
 	PosY_[1] = 810.0f;
 
-	PosX_[4] = 540.0f;//左2
+	PosX_[4] = 490.0f;//左2
 	PosY_[4] = 700.0f;
 	
-	PosX_[2] = 1112.0f;//右1
+	PosX_[2] = 1062.0f;//右1
 	PosY_[2] = 810.0f;
 
-	PosX_[3] = 1300.0f;//右2
+	PosX_[3] = 1250.0f;//右2
 	PosY_[3] = 700.0f;
 
 	
@@ -31,37 +31,37 @@ void Player::MoveUpdate()//陣1
 
 void Player::SecondMoveUpdate() // 陣2
 {
-	PosX_[0] = 920.0f; // 真ん中
+	PosX_[0] = 870.0f; // 真ん中
 	PosY_[0] = 720.0f;
 
-	PosX_[1] = 635.0f; // 左1
+	PosX_[1] = 585.0f; // 左1
 	PosY_[1] = 640.0f;
 
-	PosX_[4] = 635.0f; // 左2
+	PosX_[4] = 585.0f; // 左2
 	PosY_[4] = 830.0f;
 
-	PosX_[2] = 1205.0f; // 右1
+	PosX_[2] = 1155.0f; // 右1
 	PosY_[2] = 640.0f;
 
-	PosX_[3] = 1205.0f; // 右2
+	PosX_[3] = 1155.0f; // 右2
 	PosY_[3] = 830.0f;
 }
 
 void Player::ThirdMoveUpdate()//陣3
 {
-	PosX_[0] = 920.0f; // 真ん中
+	PosX_[0] = 870.0f; // 真ん中
 	PosY_[0] = 800.0f;
 
-	PosX_[1] = 850.0f; // 左1
+	PosX_[1] = 800.0f; // 左1
 	PosY_[1] = 620.0f;
 
-	PosX_[4] = 770.0f; // 左2
+	PosX_[4] = 720.0f; // 左2
 	PosY_[4] = 720.0f;
 
-	PosX_[2] = 990.0f; // 右1
+	PosX_[2] = 940.0f; // 右1
 	PosY_[2] = 620.0f;
 
-	PosX_[3] = 1070.0f; // 右2
+	PosX_[3] = 1020.0f; // 右2
 	PosY_[3] = 720.0f;
 }
 

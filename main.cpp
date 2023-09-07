@@ -23,17 +23,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetW(1);
 		player[i]->SetH(1);
 	}
-	struct MoveFrag //陣フラグ構造体 
+	
+	struct Timebar //時間制限バー 
 	{
-		int Move1;
-		int Move2;
-		int Move3;
+		int x;
+		int y;
+		int w;
+		int h;
+		int frag;
 	};
-	MoveFrag moveFrag{
-	    false,
-	    false,
-	    false,
+	Timebar timebar{
+	   480,860,1000,100,false
 	};
+
 	//delete player;
 
 #pragma endregion
@@ -230,6 +232,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			///進行度バーの描画
 			Novice::DrawBox(1100, 585 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
 			Novice::DrawBox(1100, 135, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
+
+			//時間制限バー描画
+			Novice::DrawBox(timebar.x, timebar.y, timebar.w, timebar.h, 0.0f, WHITE, kFillModeSolid);
+
+			
+
 			break;
 		case 2:
 			if (GameScene.scene == 2) {
