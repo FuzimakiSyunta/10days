@@ -56,6 +56,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma endregion
 
+#pragma region 進行度の変数
+
+	int degreeW = 60;
+	int degreeH = 0;
+	int degreeFrameW = 60;
+	int degreeFlameH = 450;
+
+#pragma endregion
 
 #pragma region シーン
 	struct Scene {
@@ -68,7 +76,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Scene GameScene{
 	    0, // タイトル
 	    1, // ゲーム画面
-	    0, // シーン
+	    2, // シーン
 	};
 	Scene GamePhase{
 	    0, // 敵戦闘シーン
@@ -76,7 +84,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	    2. // ゴールシーン
 	};
 
+	GameScene.scene = 0;
 #pragma endregion
+	int playerHP = 3;
 
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
@@ -116,39 +126,43 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 1: // ゲーム中
 #pragma region シーン変更
 			if (GameScene.scene == 1) {
+				if (degreeH < 450) {
+					// 敵戦闘とアイテム選択シーンの切り替え
+					if (GamePhase.phase == 0) {
+						/// 敵の生存フラグがfalseになったらアイテム選択フェーズに移動する////
 
+						if (keys[DIK_RETURN] && preKeys[DIK_RETURN] == 0) {
+							degreeH += 90;
+							GamePhase.phase = 1;
+						}
 
-
-
-
-				//敵戦闘とアイテム選択シーンの切り替え
-				if (GamePhase.phase == 0) {
-					///敵の生存フラグがfalseになったらアイテム選択フェーズに移動する////
-
-					
-					////////////////////////////////////////////////////////////////////
-					
-					////////////////アイテムを選択したら敵戦闘フェーズに移行する////////
-
-					item->Update();
-
-					if (item->GetItemNum() == 1) {
-						///自機のHPが1回復する処理
+						////////////////////////////////////////////////////////////////////
 					}
-					if (item->GetItemNum() == 2) {
-						//処理
-					}
-					if (item->GetItemNum() == 3) {
-						//処理
-					}
+					if (GamePhase.phase == 1) {
+						////////////////アイテムを選択するフェーズの処理////////////////////
 
-					////////////////////////////////////////////////////////////////////
-				}
-				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
-					GameScene.scene = 0;
+						if (keys[DIK_UP] && preKeys[DIK_UP] == 0) {
+							/// 自機のHPが1回復する処理
+							if (playerHP < 5) {
+								playerHP += 1;
+							}
+							degreeH += 90;
+							GamePhase.phase = 0;
+						}
+						if (item->GetItemNum() == 2) {
+							// 次の入力待機時間が少し長くなる処理
+						}
+						if (item->GetItemNum() == 3) {
+							// 目隠しを消す処理
+						}
 
-					break;
-				}
+						////////////////////////////////////////////////////////////////////
+					}
+					if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+						GameScene.scene = 0;
+
+						break;
+					}
 #pragma endregion
 #pragma region 自機の陣形変更
 				if (Novice::IsTriggerButton(0, kPadButton2)) {
@@ -166,10 +180,22 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				
 
 #pragma endregion
-				break;
-			  }
-		}
+					break;
+				} else if (degreeH >= 450) {
+					GameScene.scene = 2;
+				}
 
+			 }
+		case 2://ゲームクリア
+			 if (GameScene.scene == 2) {
+				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+					GamePhase.phase = 0;
+					degreeH = 0;
+					GameScene.scene = 0;
+				}
+			 }
+		}
+		
 
 		///
 		/// ↑更新処理ここまで
@@ -187,12 +213,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				player[i]->Draw(); // Player描画
 			}
 		
-			for (int i = 0; i < Enemys; i++) {
-				enemy[i]->Draw();  // Enemy描画
-			}
-			
+
+			enemy->Draw();  // Enemy描画
+			///進行度バーの描画
+			Novice::DrawBox(1100, 585 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
+			Novice::DrawBox(1100, 135, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
 			break;
-			
+		case 2:
+			if (GameScene.scene == 2) {
+				Novice::ScreenPrintf(100, 100, "GAME CLEAR");
+			}
+			break;
 		}
 
 #pragma region デバックコード
@@ -202,6 +233,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::ScreenPrintf(0, 120, "%d,%d", player[2]->GetX(), player[2]->GetY());
 		
 		Novice::ScreenPrintf(0, 40, "%d,%d",GameScene.scene);
+		Novice::ScreenPrintf(0, 90, "%d", playerHP);
 #pragma endregion
 
 		///
