@@ -11,12 +11,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Novice::Initialize(kWindowTitle, 1270, 720);
 	
 #pragma region 自機の変数
-	Player* player = new Player;
-	player->SetX(595.0f);
-	player->SetY(480.0f);
-	player->SetW(80);
-	player->SetH(80);
-	player->SetHP(5);
+	const int Players = 5;
+	Player* player[Players] = {
+	    new Player, new Player, new Player, new Player, new Player}; // int nums[6];
+	
+	for (int i = 0; i < Players; i++) {
+		player[i]->SetX(595.0f);
+		player[i]->SetY(480.0f);
+		player[i]->SetW(80);
+		player[i]->SetH(80);
+	}
+	
+	//delete player;
+
 #pragma endregion
 
 #pragma region 敵の変数
@@ -57,9 +64,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		///
 		/// ↓更新処理ここから
-		switch (GameScene.scene) 
-		{ 
-		case 0://タイトル
+		switch (GameScene.scene) {
+		case 0: // タイトル
+#pragma region シーン変更
 			if (GameScene.scene == 0) {
 				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
 					GameScene.scene = 1;
@@ -67,26 +74,34 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					break;
 				}
 			}
+#pragma endregion
+			for (int i = 0; i < Players; i++) {
+				player[i]->Initialize(); // Player初期化
+			}
 			break;
-		case 1://ゲーム中
+
+		case 1: // ゲーム中
+#pragma region シーン変更
 			if (GameScene.scene == 1) {
 				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
 					GameScene.scene = 0;
 
 					break;
 				}
-			}
+#pragma endregion
 #pragma region 自機の更新(Itemとの当たり判定もここに)
-			player->Update();
+				for (int i = 0; i < Players; i++) {
+					player[0]->Update();
+				}
 
 #pragma endregion
 
 #pragma region 敵の更新
-			enemy->Update();
+				enemy->Update();
 
 #pragma endregion
-			break;
-
+				break;
+			   }
 		}
 
 
@@ -102,14 +117,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			
 			break;
 		case 1:
-			player->Draw(); // Player描画
+			for (int i = 0; i < Players; i++) {
+				player[i]->Draw(); // Player描画
+			}
 			enemy->Draw();  // Enemy描画
 			break;
 			
 		}
 
 #pragma region デバックコード
-		Novice::ScreenPrintf(0, 20, "%d,%d", player->GetX(), player->GetY());
+		for (int i = 0; i < Players; i++) {
+			Novice::ScreenPrintf(0, 20, "%d,%d", player[0]->GetX(), player[0]->GetY());
+		}
 		Novice::ScreenPrintf(0, 40, "%d,%d",GameScene.scene);
 #pragma endregion
 

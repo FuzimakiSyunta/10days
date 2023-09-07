@@ -2,18 +2,19 @@
 #include "Novice.h"
 
 
-void Player::Initialize()
-{
+void Player::Initialize() { 
+	PosX_ = 595.0f;
+	PosY_ = 480.0f;
 	
-
 }
 void Player::Update()
 {
-
+	PosX_ = 585.0f;
 }
 
 void Player::Draw() 
 { 
+	Novice::DrawBox(PosX_, PosY_, W_, H_, 0.0f, WHITE, kFillModeSolid);
 	Novice::DrawBox(PosX_, PosY_, W_, H_, 0.0f, WHITE, kFillModeSolid);
 
 }
@@ -28,4 +29,3 @@ void Player::SetW(int W_) { this->W_ = W_; }
 
 void Player::SetH(int H_) { this->H_ = H_; }
 
-void Player::SetHP(int HP_) { this->HP_ = HP_; }
