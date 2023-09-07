@@ -14,53 +14,55 @@ void Player::MoveUpdate()//陣1
 	PosX_[0] = 920.0f;//真ん中
 	PosY_[0] = 700.0f;
 
-	PosX_[1] = 635.0f;//左1
-	PosY_[1] = 700.0f;
+	PosX_[1] = 920.0f;//左1
+	PosY_[1] = 590.0f;
 
-	PosX_[4] = 350.0f;//左2
+	PosX_[4] = 540.0f;//左2
 	PosY_[4] = 700.0f;
 	
-	PosX_[2] = 1205.0f;//右1
-	PosY_[2] = 700.0f;
+	PosX_[2] = 920.0f;//右1
+	PosY_[2] = 810.0f;
 
-	PosX_[3] = 1490.0f;//右2
+	PosX_[3] = 1300.0f;//右2
 	PosY_[3] = 700.0f;
 
 	
 }
+
 void Player::SecondMoveUpdate() // 陣2
+{
+	PosX_[0] = 920.0f; // 真ん中
+	PosY_[0] = 720.0f;
+
+	PosX_[1] = 635.0f; // 左1
+	PosY_[1] = 640.0f;
+
+	PosX_[4] = 635.0f; // 左2
+	PosY_[4] = 830.0f;
+
+	PosX_[2] = 1205.0f; // 右1
+	PosY_[2] = 640.0f;
+
+	PosX_[3] = 1205.0f; // 右2
+	PosY_[3] = 830.0f;
+}
+
+void Player::ThirdMoveUpdate()//陣3
 {
 	PosX_[0] = 920.0f; // 真ん中
 	PosY_[0] = 800.0f;
 
-	PosX_[1] = 635.0f; // 左1
-	PosY_[1] = 700.0f;
+	PosX_[1] = 850.0f; // 左1
+	PosY_[1] = 620.0f;
 
-	PosX_[4] = 350.0f; // 左2
-	PosY_[4] = 800.0f;
+	PosX_[4] = 770.0f; // 左2
+	PosY_[4] = 720.0f;
 
-	PosX_[2] = 1205.0f; // 右1
-	PosY_[2] = 700.0f;
+	PosX_[2] = 990.0f; // 右1
+	PosY_[2] = 620.0f;
 
-	PosX_[3] = 1490.0f; // 右2
-	PosY_[3] = 800.0f;
-}
-void Player::ThirdMoveUpdate()//陣3
-{
-	PosX_[0] = 595.0f;
-	PosY_[0] = 690.0f;
-
-	PosX_[1] = 505.0f;
-	PosY_[1] = 520.0f;
-
-	PosX_[2] = 685.0f;
-	PosY_[2] = 400.0f;
-
-	PosX_[3] = 685.0f;
-	PosY_[3] = 480.0f;
-
-	PosX_[4] = 685.0f;
-	PosY_[4] = 480.0f;
+	PosX_[3] = 1070.0f; // 右2
+	PosY_[3] = 720.0f;
 }
 
 void Player::Draw() 
