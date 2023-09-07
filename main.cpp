@@ -1,6 +1,7 @@
 ﻿#include <Novice.h>
 #include"Player.h"
 #include"Enemy.h"
+#include "Item.h"
 
 const char kWindowTitle[] = "10days";
 
@@ -9,7 +10,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1270, 720);
-	
+
 #pragma region 自機の変数
 	const int Players = 5;
 	Player* player[Players] = {
@@ -28,10 +29,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma region 敵の変数
 	Enemy* enemy = new Enemy;
-	enemy->SetX(605.0f);
+	enemy->SetX(575.0f);
 	enemy->SetY(0.0f);
-	enemy->SetSpeed(1.0f);
+	enemy->SetSpeed(5.0f);
 #pragma endregion
+
+#pragma region アイテムの変数
+
+	Item* item = new Item;
+	item->SetItemNum(0);
+
+#pragma endregion
+
 
 #pragma region シーン
 	struct Scene {
@@ -39,13 +48,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		int Game;
 		// シーン用関数
 		int scene;
+		int phase;
 	};
 	Scene GameScene{
 	    0, // タイトル
 	    1, // ゲーム画面
 	    0, // シーン
 	};
-
+	Scene GamePhase{
+	    0, // 敵戦闘シーン
+	    1, // アイテム選択画面
+	    2. // ゴールシーン
+	};
 
 #pragma endregion
 
@@ -69,6 +83,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma region シーン変更
 			if (GameScene.scene == 0) {
 				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+					enemy->Initialize();
 					GameScene.scene = 1;
 
 					break;
@@ -83,6 +98,29 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 1: // ゲーム中
 #pragma region シーン変更
 			if (GameScene.scene == 1) {
+				//敵戦闘とアイテム選択シーンの切り替え
+				if (GamePhase.phase == 0) {
+					///敵の生存フラグがfalseになったらアイテム選択フェーズに移動する////
+
+					
+					////////////////////////////////////////////////////////////////////
+					
+					////////////////アイテムを選択したら敵戦闘フェーズに移行する////////
+
+					item->Update();
+
+					if (item->GetItemNum() == 1) {
+						///自機のHPが1回復する処理
+					}
+					if (item->GetItemNum() == 2) {
+						//処理
+					}
+					if (item->GetItemNum() == 3) {
+						//処理
+					}
+
+					////////////////////////////////////////////////////////////////////
+				}
 				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
 					GameScene.scene = 0;
 

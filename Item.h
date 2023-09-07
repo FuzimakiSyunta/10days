@@ -22,18 +22,15 @@ public:
     /// </summary>
     void Draw();
 
+    ///ゲッター
+	int GetItemNum() { return ItemNum_; };
+
+    ///セッター
+	void SetItemNum(int ItemNum__);
+
 private:
-    //アイテムの座標
-    float PosX;
-    float PosY;
 
-    //アイテム当たり判定のサイズ
-    int W;
-    int H;
-
-    //アイテムの種類
+    //取得したアイテムの種類（効果発動中のアイテムの種類）
     int ItemNum_;
 
-    //アイテムの移動スピード
-    int ItemSpeed;
 };
