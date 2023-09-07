@@ -45,7 +45,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Enemy* enemy[Enemys] = { new Enemy,new Enemy ,new Enemy ,new Enemy ,new Enemy };
 
 	for (int i = 0; i < Enemys; i++) {
-		enemy[i]->SetX(575.0f);
+		enemy[i]->SetX(900.0f);
 		enemy[i]->SetY(0.0f);
 		enemy[i]->SetSpeed(5);
 	}

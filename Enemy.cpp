@@ -3,22 +3,22 @@
 
 void Enemy::Initialize() {
 	for (int i = 0; i < 5; i++) {
-		PosX_[i] = 575.0f;
+		PosX_[i] = 900.0f;
 		PosY_[i] = 0.0f;
 	}
-	PosX_[1] = 375.0f;
-	PosX_[2] = 775.0f;
+	PosX_[1] = 700.0f;
+	PosX_[2] = 1100.0f;
 	frame_ = 0;
 	timer_ = 0;
 };
 
 void Enemy::Update() {
 	for (int i = 0; i < 5; i++) {
-		if (PosY_[i] < 200) {
+		if (PosY_[i] < 300) {
 			PosY_[i] += Speed_;
 		}
 		
-		if (PosY_[i] >= 200) {
+		if (PosY_[i] >= 300) {
 			frame_ += 1;
 		}
 	}
