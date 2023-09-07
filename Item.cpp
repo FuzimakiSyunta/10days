@@ -20,3 +20,5 @@ void Item::Update() {
 void Item::Draw() {
 
 };
+
+void Item::SetItemNum(int Speed_) { this->ItemNum_ = ItemNum_; }
