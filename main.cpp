@@ -127,45 +127,43 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
 					}
-
 					curtainDown = true;
-					if (curtainDown == true) {
-						curtainY += 2;
-						if (curtainY >= 0) {
-							curtainY = 0;
-							curtainDown = false;
-						}
-
-						GameScene.scene = 1;
-
 						break;
 					}
 				}
+			if (curtainDown == true) {
+				    curtainY += 5;
+			}
+			if (curtainY >= 0) {
+				    curtainDown = false;
+			}
+
+			if (curtainDown == false && curtainY >= 0) {
+				    GameScene.scene = 1;
+			}
 #pragma endregion
 
 			case 1: // ゲーム中
 #pragma region シーン変更
-
-				if (curtainFlame <= 60) {
-					if (curtainY == 0) {
-						curtainFlame++;
-					}
-				} else if (curtainFlame > 60) {
-					curtainUp = true;
-					if (curtainUp == true) {
-						curtainY -= 2;
-						if (curtainY <= -1080) {
-							curtainY = -1080;
-							curtainUp == false;
-						}
-						curtainFlame = 0;
-					}
-					if (Novice::IsTriggerButton(0, kPadButton1)) {
-						for (int i = 0; i < 5; i++) {
-							player[i]->Initialize();
-						}
-					}
-				}
+			if (curtainY >= 0) {
+				    curtainFlame++;
+			}
+			if (curtainFlame >= 60) {
+				    curtainUp = true;
+			}
+			if (curtainUp == true) {
+				    curtainY -= 5;
+			}
+			if (curtainY <= -1080) {
+				    curtainY = -1080;
+				    curtainUp = false;
+				    curtainFlame = 0;
+			}
+				if (Novice::IsTriggerButton(0, kPadButton1)) {
+				   for (int i = 0; i < 5; i++) {
+				    player[i]->Initialize();
+				   }
+			    }
 				if (GameScene.scene == 1) {
 					backGroundFlame++;
 					if (backGroundFlame >= 121) {
@@ -350,6 +348,5 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		// ライブラリの終了
 		Novice::Finalize();
-		return 0;
-	}
+	    return 0;
 }
