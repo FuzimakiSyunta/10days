@@ -40,6 +40,21 @@ void Enemy::Update() {
 		timer_ = 0;
 		Speed_ = 0;
 		formation_ = rand() % 3 + 1;
+		if (formation_ == 1 && formation1_ == true) {
+			for (int i{}; formation_ == 1; i++) {
+				formation_ = rand() % 3 + 1;
+			}
+		}
+		if (formation_ == 2 && formation2_ == true) {
+			for (int i{}; formation_ == 2; i++) {
+				formation_ = rand() % 3 + 1;
+			}
+		}
+		if (formation_ == 3 && formation3_ == true) {
+			for (int i{}; formation_ == 3; i++) {
+				formation_ = rand() % 3 + 1;
+			}
+		}
 	}
 	if (formation_ == 1) {
 		if (formation1_ == false) {
