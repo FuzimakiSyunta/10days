@@ -36,6 +36,7 @@ public:
 	void SetY(int PosY_);
 	void SetW(int W_);
 	void SetH(int H_);
+	void SetSpeed(int Speed);
 	
 
 private:
@@ -47,5 +48,6 @@ private:
 	int H_;
 	//写真
 	int Ship_= Novice::LoadTexture("./Resource./Ship.png");
-	
+	//移動
+	float Speed;
 };
