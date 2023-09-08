@@ -12,6 +12,8 @@ public:
 	/// 自キャラ
 	/// 更新
 	/// </summary>
+	void Update();
+
 	void MoveUpdate();
 
 	void SecondMoveUpdate();
@@ -36,8 +38,10 @@ public:
 	void SetY(int PosY_);
 	void SetW(int W_);
 	void SetH(int H_);
-	void SetSpeed(int Speed);
 	
+	// アニメーション
+	int Frame[5];
+	int Anime[5];
 
 private:
 	// Player座標
@@ -47,7 +51,11 @@ private:
 	int W_;
 	int H_;
 	//写真
-	int Ship_= Novice::LoadTexture("./Resource./Ship.png");
-	//移動
-	float Speed;
+	int ShipUpanime_[2] = {
+	    Novice::LoadTexture("./Resource./Ship.png"),
+	    Novice::LoadTexture("./Resource./Shipup.png"),
+	};
+
+
+	
 };

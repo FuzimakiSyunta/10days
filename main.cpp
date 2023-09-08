@@ -10,7 +10,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1920, 1080);
-	Novice::SetWindowMode(kFullscreen);
+	//Novice::SetWindowMode(kFullscreen);
 
 #pragma region 自機の変数
 	const int Players = 5;
@@ -22,8 +22,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetY(480.0f);
 		player[i]->SetW(1);
 		player[i]->SetH(1);
-		player[i]->SetSpeed(15);
 	}
+	int Animation = false;//アニメーションしてるかフラグ
 	
 	struct Timebar //時間制限バー 
 	{
@@ -111,9 +111,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 0: // タイトル
 #pragma region シーン変更
 			if (GameScene.scene == 0) {
-				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+				if (Novice::IsTriggerButton(0, kPadButton11))
+				{
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
+						player[i]->Initialize(); // Player初期化
+						
 					}
 					
 					GameScene.scene = 1;
@@ -122,10 +125,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 			}
 #pragma endregion
-			for (int i = 0; i < Players; i++) {
-				player[i]->Initialize(); // Player初期化
-			}
-			break;
 
 		case 1: // ゲーム中
 #pragma region シーン変更
@@ -174,14 +173,23 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 						////////////////////////////////////////////////////////////////////
 					}
+					if (Animation == true){
+						for (int i = 0; i < Players; i++) {
+							player[i]->Update();
+						}
+
 					if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
 						GameScene.scene = 0;
-
+						Animation = false;
 						break;
 					}
+				}
 #pragma endregion
+					
+					
 #pragma region 自機の陣形変更
 				if (GamePhase.phase == 0) {
+					Animation = true;
 					if (Novice::IsTriggerButton(0, kPadButton2)) {
 						for (int i = 0; i < 5; i++) {
 							player[i]->MoveUpdate();
@@ -203,9 +211,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma endregion
 
 #pragma region 敵の更新
-				enemy[0]->Update();
 				
+				for (int i = 0; i < Enemys; i++) {
 
+					enemy[i]->Update();
+				}
 #pragma endregion
 					break;
 				} else if (degreeH >= 750) {
@@ -215,7 +225,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			 }
 		case 2://ゲームクリア
 			 if (GameScene.scene == 2) {
-				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+				if (Novice::IsTriggerButton(0, kPadButton11)) {
 					GamePhase.phase = 0;
 					degreeH = 0;
 					GameScene.scene = 0;
