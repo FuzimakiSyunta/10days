@@ -110,7 +110,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 0: // タイトル
 #pragma region シーン変更
 			if (GameScene.scene == 0) {
-				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+				if (Novice::IsTriggerButton(0, kPadButton11))
+				{
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 					}
@@ -216,7 +217,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			 }
 		case 2://ゲームクリア
 			 if (GameScene.scene == 2) {
-				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+				if (Novice::IsTriggerButton(0, kPadButton11)) {
 					GamePhase.phase = 0;
 					degreeH = 0;
 					GameScene.scene = 0;
