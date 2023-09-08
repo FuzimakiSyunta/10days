@@ -5,12 +5,19 @@
 
 const char kWindowTitle[] = "10days";
 
+
+
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1920, 1080);
 	//Novice::SetWindowMode(kFullscreen);
+
+	int backGround1 = Novice::LoadTexture("./Resource/Backgraund1.png");
+	int backGround2 = Novice::LoadTexture("./Resource/Backgraund2.png");
+	int backGroundNum = 0;
+	int backGroundFlame = 0;
 
 #pragma region 自機の変数
 	const int Players = 5;
@@ -128,7 +135,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		case 1: // ゲーム中
 #pragma region シーン変更
+
 			if (GameScene.scene == 1) {
+					backGroundFlame++;
+			if (backGroundFlame >= 121) {
+					backGroundFlame = 0;
+			}
+				if (backGroundFlame <= 60) {
+					backGroundNum = 0;
+				} else {
+					backGroundNum = 1;
+				}
 				if (degreeH < 750) {
 					// 敵戦闘とアイテム選択シーンの切り替え
 					if (GamePhase.phase == 0) {
@@ -251,6 +268,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			
 			break;
 		case 1:
+			if (backGroundNum == 0) {
+				Novice::DrawSprite(0, 0, backGround1, 1, 1, 0.0f, WHITE);
+			} else if (backGroundNum == 1) {
+				Novice::DrawSprite(0, 0, backGround2, 1, 1, 0.0f, WHITE);
+			}
 			for (int i = 0; i < Players; i++) {
 				player[i]->Draw(); // Player描画
 			}
@@ -276,6 +298,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma region デバックコード
 		
+		Novice::DrawBox(0, 0, 300, 300, 0.0f, BLACK, kFillModeSolid);
 			Novice::ScreenPrintf(0, 20, "%d,%d", player[0]->GetX(), player[0]->GetY());
 			Novice::ScreenPrintf(0, 100, "%d,%d", player[1]->GetX(), player[1]->GetY());
 			Novice::ScreenPrintf(0, 120, "%d,%d", player[2]->GetX(), player[2]->GetY());
