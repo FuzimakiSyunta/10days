@@ -1,7 +1,8 @@
 ﻿#include <Novice.h>
 #include"Player.h"
 #include"Enemy.h"
-#include "Item.h"
+#include"Item.h"
+#include"Title.h"
 
 const char kWindowTitle[] = "Formation_Ocean";
 
@@ -91,7 +92,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	GameScene.scene = 0;
 #pragma endregion
-	int playerHP = 3;
+
+#pragma region タイトルアニメーション生成
+	TitleAction* Titleanime = new TitleAction;
+	Titleanime->TitleAnimation = 0;
+	Titleanime->TitleFrame = 0;
+	Titleanime->ButtonAnimation = 0;
+	Titleanime->ButtonFrame = 0;
+#pragma endregion
+
+	int playerHP = 3;//自機の体力
 
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
@@ -112,10 +122,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 0: // タイトル
 #pragma region シーン変更
 			if (GameScene.scene == 0) {
+				//タイトルアニメーション
+				Titleanime->Update();
 				if (Novice::IsTriggerButton(0, kPadButton11)) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
+						Titleanime->Initialize();
 					}
 					curtainDown = true;
 						break;
@@ -279,6 +292,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			///
 			switch (GameScene.scene) {
 			case 0: // タイトル
+				Titleanime->Draw();//タイトルアニメーション
 				Novice::DrawBox(0, curtainY, 1920, 1080, 0.0f, GREEN, kFillModeSolid);
 				break;
 			case 1:
