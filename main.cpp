@@ -3,7 +3,7 @@
 #include"Enemy.h"
 #include "Item.h"
 
-const char kWindowTitle[] = "10days";
+const char kWindowTitle[] = "Formation_Ocean";
 
 
 
