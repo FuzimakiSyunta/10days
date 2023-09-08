@@ -11,6 +11,7 @@ void Player::Initialize() {
 }
 void Player::MoveUpdate()//陣1
 {
+
 	PosX_[0] = 870.0f;//真ん中
 	PosY_[0] = 700.0f;
 
@@ -83,4 +84,6 @@ void Player::SetY(int PosY_) { this->PosY_[5] = PosY_; }
 void Player::SetW(int W_) { this->W_ = W_; }
 
 void Player::SetH(int H_) { this->H_ = H_; }
+
+void Player::SetSpeed(int Speed) {this->Speed=Speed;}
 

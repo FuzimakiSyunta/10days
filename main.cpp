@@ -22,6 +22,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetY(480.0f);
 		player[i]->SetW(1);
 		player[i]->SetH(1);
+		player[i]->SetSpeed(15);
 	}
 	
 	struct Timebar //時間制限バー 
