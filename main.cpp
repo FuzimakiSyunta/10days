@@ -32,17 +32,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	}
 	int Animation = false;//アニメーションしてるかフラグ
 	
-	struct Timebar //時間制限バー 
-	{
-		int x;
-		int y;
-		int w;
-		int h;
-		int frag;
-	};
-	Timebar timebar{
-	   480,860,1000,100,false
-	};
+	//struct Timebar //時間制限バー 
+	//{
+	//	int x;
+	//	int y;
+	//	int w;
+	//	int h;
+	//	int frag;
+	//};
+	//Timebar timebar{
+	//   480,860,1000,100,false
+	//};
 
 	//delete player;
 
@@ -282,11 +282,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			///進行度バーの描画
 			Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
 			Novice::DrawBox(100, 165, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
-
-			//時間制限バー描画
-			Novice::DrawBox(timebar.x, timebar.y, timebar.w, timebar.h, 0.0f, WHITE, kFillModeSolid);
-
-			
 
 			break;
 		case 2:

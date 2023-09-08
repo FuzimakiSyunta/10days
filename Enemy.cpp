@@ -18,6 +18,7 @@ void Enemy::Initialize() {
 	formation2_ = false;
 	formation3_ = false;
 	Start_ = false;
+	TimePosW_ = 1080;
 };
 
 void Enemy::Update() {
@@ -28,6 +29,7 @@ void Enemy::Update() {
 	}
 	if (PosY_[0] >= 300) {
 		Start_ = true;
+		
 	}
 	if (Start_ == true) {
 		frame_ += 1;
@@ -39,6 +41,7 @@ void Enemy::Update() {
 	if (timer_ >= 3) {
 		timer_ = 0;
 		Speed_ = 0;
+		TimePosW_ = 1080;
 		formation_ = rand() % 3 + 1;
 		if (formation_ == 1 && formation1_ == true) {
 			for (int i{}; formation_ == 1; i++) {
@@ -57,6 +60,7 @@ void Enemy::Update() {
 		}
 	}
 	if (formation_ == 1) {
+		TimePosW_ -= 6;
 		if (formation1_ == false) {
 			PosY_[0] = 300.0f;//真ん中
 			PosY_[1] = 200.0f;//右
@@ -69,6 +73,7 @@ void Enemy::Update() {
 		}
 	}
 	if (formation_ == 2) {
+		TimePosW_ -= 6;
 		if (formation2_ == false) {
 			PosY_[0] = 100.0f;//真ん中
 			PosY_[1] = 200.0f;//右
@@ -81,6 +86,7 @@ void Enemy::Update() {
 		}
 	}
 	if (formation_ == 3) {
+		TimePosW_ -= 6;
 		if (formation3_ == false) {
 			PosY_[0] = 200.0f;//真ん中
 			PosY_[1] = 100.0f;//右
@@ -143,6 +149,15 @@ void Enemy::Draw(){
 	//	BLACK,
 	//	kFillModeSolid
 	//);
+
+	//時間制限バー描画
+	Novice::DrawBox(
+		480, 860,
+		TimePosW_, 100,
+		0.0f,
+		RED,
+		kFillModeSolid
+	);
 
 	Novice::ScreenPrintf(0, 60, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_[0], PosY_[0], Speed_);
 	Novice::ScreenPrintf(0, 80, "frame%d,timer%d,Formation%d", frame_, timer_,formation_);
