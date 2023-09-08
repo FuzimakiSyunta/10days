@@ -205,6 +205,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							player[i]->ThirdMoveUpdate();
 						}
 					}
+					if (Novice::IsTriggerButton(0, kPadButton1)) {
+						for (int i = 0; i < 5; i++) {
+							player[i]->Initialize();
+						}
+					}
 				}
 				
 
