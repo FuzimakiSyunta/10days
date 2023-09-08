@@ -111,7 +111,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 0: // タイトル
 #pragma region シーン変更
 			if (GameScene.scene == 0) {
-				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+				if (Novice::IsTriggerButton(0, kPadButton11))
+				{
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
@@ -143,7 +144,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					if (GamePhase.phase == 1) {
 						////////////////アイテムを選択するフェーズの処理////////////////////
 
-						if (keys[DIK_UP] && preKeys[DIK_UP] == 0) {
+						if (Novice::IsTriggerButton(0, kPadButton12) &&
+						        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+						        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 							/// 自機のHPが1回復する処理
 							if (playerHP < 5) {
 								playerHP += 1;
@@ -151,11 +154,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							degreeH += 150;
 							GamePhase.phase = 0;
 						}
-						if (item->GetItemNum() == 2) {
+						if (Novice::IsTriggerButton(0, kPadButton13) &&
+						        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
+						        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 							// 次の入力待機時間が少し長くなる処理
+
+							degreeH += 150;
+							GamePhase.phase = 0;
 						}
-						if (item->GetItemNum() == 3) {
+						if (Novice::IsTriggerButton(0, kPadButton11) &&
+						        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+						        Novice::IsTriggerButton(0, kPadButton12) == 0) {
 							// 目隠しを消す処理
+
+							degreeH += 150;
+							GamePhase.phase = 0; 
 						}
 
 						////////////////////////////////////////////////////////////////////
@@ -212,7 +225,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			 }
 		case 2://ゲームクリア
 			 if (GameScene.scene == 2) {
-				if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+				if (Novice::IsTriggerButton(0, kPadButton11)) {
 					GamePhase.phase = 0;
 					degreeH = 0;
 					GameScene.scene = 0;
@@ -237,9 +250,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				player[i]->Draw(); // Player描画
 			}
 		
-			for (int i = 0; i < Enemys; i++) {
-				enemy[i]->Draw();  // Enemy描画
-			}
+			enemy[0]->Draw();  // Enemy描画
+
 			///進行度バーの描画
 			Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
 			Novice::DrawBox(100, 165, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);

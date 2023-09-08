@@ -12,7 +12,6 @@ public:
     void Initialize();
 
     /// <summary>
-    /// ©ƒLƒƒƒ‰
     /// XV
     /// </summary>
     void Update();
