@@ -25,17 +25,17 @@ public:
 
 private:
 
-	float PosX_[5];
-	float PosY_[5];
-	int Speed_;
-	int Shark_ = Novice::LoadTexture("./Resource./Shark.png");
-	int frame_;
-	int timer_;
-	int formation_;
-	int formation1_;
-	int formation2_;
-	int formation3_;
-	int Start_;
+	float PosX_[5]; //敵のX座標
+	float PosY_[5]; //敵のY座標
+	int Speed_; //敵のスピード
+	int Shark_ = Novice::LoadTexture("./Resource./Shark.png"); //テクスチャ
+	int frame_; //フレーム
+	int timer_; //タイマー
+	int formation_; //フォーメーション
+	int formation1_; //1個目のフォーメーションフラグ
+	int formation2_; //2個目のフォーメーションフラグ
+	int formation3_; //3個目のフォーメーションフラグ
+	int Start_; //フレームを始めるためのフラグ
 
-	int TimePosW_;
+	int TimePosW_;//時間バーの横の長さ
 };
