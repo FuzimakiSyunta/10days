@@ -144,7 +144,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					if (GamePhase.phase == 1) {
 						////////////////アイテムを選択するフェーズの処理////////////////////
 
-						if (keys[DIK_UP] && preKeys[DIK_UP] == 0) {
+						if (Novice::IsTriggerButton(0, kPadButton12) &&
+						        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+						        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 							/// 自機のHPが1回復する処理
 							if (playerHP < 5) {
 								playerHP += 1;
@@ -152,11 +154,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							degreeH += 150;
 							GamePhase.phase = 0;
 						}
-						if (item->GetItemNum() == 2) {
+						if (Novice::IsTriggerButton(0, kPadButton13) &&
+						        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
+						        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 							// 次の入力待機時間が少し長くなる処理
+
+							degreeH += 150;
+							GamePhase.phase = 0;
 						}
-						if (item->GetItemNum() == 3) {
+						if (Novice::IsTriggerButton(0, kPadButton11) &&
+						        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+						        Novice::IsTriggerButton(0, kPadButton12) == 0) {
 							// 目隠しを消す処理
+
+							degreeH += 150;
+							GamePhase.phase = 0; 
 						}
 
 						////////////////////////////////////////////////////////////////////
