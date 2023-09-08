@@ -61,10 +61,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma region 進行度の変数
 
-	int degreeW = 60;
+	int degreeW = 100;
 	int degreeH = 0;
-	int degreeFrameW = 60;
-	int degreeFlameH = 450;
+	int degreeFrameW = 100;
+	int degreeFlameH = 750;
 
 #pragma endregion
 
@@ -129,13 +129,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 1: // ゲーム中
 #pragma region シーン変更
 			if (GameScene.scene == 1) {
-				if (degreeH < 450) {
+				if (degreeH < 750) {
 					// 敵戦闘とアイテム選択シーンの切り替え
 					if (GamePhase.phase == 0) {
 						/// 敵の生存フラグがfalseになったらアイテム選択フェーズに移動する////
 
 						if (keys[DIK_RETURN] && preKeys[DIK_RETURN] == 0) {
-							degreeH += 90;
+							degreeH += 150;
 							GamePhase.phase = 1;
 						}
 
@@ -149,7 +149,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							if (playerHP < 5) {
 								playerHP += 1;
 							}
-							degreeH += 90;
+							degreeH += 150;
 							GamePhase.phase = 0;
 						}
 						if (item->GetItemNum() == 2) {
@@ -168,21 +168,24 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					}
 #pragma endregion
 #pragma region 自機の陣形変更
-				if (Novice::IsTriggerButton(0, kPadButton2)) {
-					for (int i = 0; i < 5; i++) {
-						player[i]->MoveUpdate();
+				if (GamePhase.phase == 0) {
+					if (Novice::IsTriggerButton(0, kPadButton2)) {
+						for (int i = 0; i < 5; i++) {
+							player[i]->MoveUpdate();
+						}
+					}
+					if (Novice::IsTriggerButton(0, kPadButton3)) {
+						for (int i = 0; i < 5; i++) {
+							player[i]->SecondMoveUpdate();
+						}
+					}
+					if (Novice::IsTriggerButton(0, kPadButton0)) {
+						for (int i = 0; i < 5; i++) {
+							player[i]->ThirdMoveUpdate();
+						}
 					}
 				}
-				if (Novice::IsTriggerButton(0, kPadButton3)) {
-					for (int i = 0; i < 5; i++) {
-						player[i]->SecondMoveUpdate();
-					}
-				}
-				if (Novice::IsTriggerButton(0, kPadButton0)) {
-					for (int i = 0; i < 5; i++) {
-						player[i]->ThirdMoveUpdate();
-					}
-				}
+				
 
 #pragma endregion
 
@@ -194,7 +197,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma endregion
 					break;
-				} else if (degreeH >= 450) {
+				} else if (degreeH >= 750) {
 					GameScene.scene = 2;
 				}
 
@@ -230,8 +233,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				enemy[i]->Draw();  // Enemy描画
 			}
 			///進行度バーの描画
-			Novice::DrawBox(1100, 585 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
-			Novice::DrawBox(1100, 135, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
+			Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
+			Novice::DrawBox(100, 165, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
 
 			//時間制限バー描画
 			Novice::DrawBox(timebar.x, timebar.y, timebar.w, timebar.h, 0.0f, WHITE, kFillModeSolid);
