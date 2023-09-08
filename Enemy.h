@@ -32,5 +32,8 @@ private:
 	int frame_;
 	int timer_;
 	int formation_;
-	int Save_;
+	int formation1_;
+	int formation2_;
+	int formation3_;
+	int Start_;
 };

@@ -14,7 +14,10 @@ void Enemy::Initialize() {
 	frame_ = 0;
 	timer_ = 0;
 	formation_ = 0;
-	Save_ = 0;
+	formation1_ = false;
+	formation2_ = false;
+	formation3_ = false;
+	Start_ = false;
 };
 
 void Enemy::Update() {
@@ -22,10 +25,12 @@ void Enemy::Update() {
 		if (PosY_[i] < 300) {
 			PosY_[i] += Speed_;
 		}
-		
-		if (PosY_[i] >= 300) {
-			frame_ += 1;
-		}
+	}
+	if (PosY_[0] >= 300) {
+		Start_ = true;
+	}
+	if (Start_ == true) {
+		frame_ += 1;
 	}
 	if (frame_ >= 60) {
 		timer_ += 1;
@@ -37,33 +42,39 @@ void Enemy::Update() {
 		formation_ = rand() % 3 + 1;
 	}
 	if (formation_ == 1) {
-		if (Save_ != 1) {
+		if (formation1_ == false) {
 			PosY_[0] = 300.0f;//真ん中
 			PosY_[1] = 200.0f;//右
 			PosY_[2] = 200.0f;//左
 			PosY_[3] = 100.0f;//右端
 			PosY_[4] = 100.0f;//左端
-			Save_ = 1;
+			formation1_ = true;
+			formation2_ = false;
+			formation3_ = false;
 		}
 	}
 	if (formation_ == 2) {
-		if (Save_ != 2) {
+		if (formation2_ == false) {
 			PosY_[0] = 100.0f;//真ん中
 			PosY_[1] = 200.0f;//右
 			PosY_[2] = 200.0f;//左
 			PosY_[3] = 300.0f;//右端
 			PosY_[4] = 300.0f;//左端
-			Save_ = 2;
+			formation1_ = false;
+			formation2_ = true;
+			formation3_ = false;
 		}
 	}
 	if (formation_ == 3) {
-		if (Save_ != 3) {
+		if (formation3_ == false) {
 			PosY_[0] = 200.0f;//真ん中
 			PosY_[1] = 100.0f;//右
 			PosY_[2] = 100.0f;//左
 			PosY_[3] = 300.0f;//右端
 			PosY_[4] = 300.0f;//左端
-			Save_ = 3;
+			formation1_ = false;
+			formation2_ = false;
+			formation3_ = true;
 		}
 	}
 }

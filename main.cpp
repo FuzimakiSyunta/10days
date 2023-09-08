@@ -160,6 +160,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						}
 						curtainFlame = 0;
 					}
+					if (Novice::IsTriggerButton(0, kPadButton1)) {
+						for (int i = 0; i < 5; i++) {
+							player[i]->Initialize();
+						}
+					}
 				}
 				if (GameScene.scene == 1) {
 					backGroundFlame++;
