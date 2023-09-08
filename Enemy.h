@@ -31,4 +31,5 @@ private:
 	int Shark_ = Novice::LoadTexture("./Resource./Shark.png");
 	int frame_;
 	int timer_;
+	int formation_;
 };
