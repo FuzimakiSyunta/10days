@@ -31,18 +31,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetH(1);
 	}
 	int Animation = false;//アニメーションしてるかフラグ
-	
-	//struct Timebar //時間制限バー 
-	//{
-	//	int x;
-	//	int y;
-	//	int w;
-	//	int h;
-	//	int frag;
-	//};
-	//Timebar timebar{
-	//   480,860,1000,100,false
-	//};
 
 	//delete player;
 
