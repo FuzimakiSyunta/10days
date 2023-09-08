@@ -36,19 +36,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetW(1);
 		player[i]->SetH(1);
 	}
-	int Animation = false; // アニメーションしてるかフラグ
+	int Animation = false;//アニメーションしてるかフラグ
 
-	struct Timebar // 時間制限バー
-	{
-		int x;
-		int y;
-		int w;
-		int h;
-		int frag;
-	};
-	Timebar timebar{480, 860, 1000, 100, false};
-
-	// delete player;
+	//delete player;
 
 #pragma endregion
 
@@ -303,24 +293,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 				enemy[0]->Draw(); // Enemy描画
 
-				/// 進行度バーの描画
-				Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
-				Novice::DrawBox(
-				    100, 165, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
+			///進行度バーの描画
+			Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
+			Novice::DrawBox(100, 165, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
 
-				// 時間制限バー描画
-				Novice::DrawBox(
-				    timebar.x, timebar.y, timebar.w, timebar.h, 0.0f, WHITE, kFillModeSolid);
-
-				Novice::DrawBox(0, curtainY, 1920, 1080, 0.0f, GREEN, kFillModeSolid);
-
-				break;
-			case 2:
-				if (GameScene.scene == 2) {
-					Novice::ScreenPrintf(100, 100, "GAME CLEAR");
-				}
-				break;
+			break;
+		case 2:
+			if (GameScene.scene == 2) {
+				Novice::ScreenPrintf(100, 100, "GAME CLEAR");
 			}
+			break;
+		}
 
 #pragma region デバックコード
 

@@ -36,4 +36,6 @@ private:
 	int formation2_;
 	int formation3_;
 	int Start_;
+
+	int TimePosW_;
 };
