@@ -8,6 +8,12 @@ void TitleAction::Initialize()
 	TitleAnimation = 0;
 	ButtonAnimation = 0;
 }
+void TitleAction::GameoverInitialize()
+{
+	GameoverFrame = 0;
+	GameoverAnimation = 0;
+}
+
 
 void TitleAction::Update()
 {
@@ -32,8 +38,27 @@ void TitleAction::Update()
 	ButtonFrame++;
 }
 
+void TitleAction::GameoverUpdate()
+{
+	// ゲームオーバーアニメーション
+	if (GameoverFrame >= 10) {
+		GameoverAnimation++;
+		GameoverFrame = 0;
+	}
+	if (GameoverAnimation >= 8) {
+		GameoverAnimation = 7;	
+	}
+	GameoverFrame++;
+	
+}
+
 void TitleAction::Draw()
 {
 	Novice::DrawSprite(0, 0, Titleimage[TitleAnimation], 1, 1, 0.0f, WHITE);
 	Novice::DrawSprite(0, 0, Buttonimage[ButtonAnimation], 1, 1, 0.0f, WHITE);
+}
+
+void TitleAction::GameoverDraw()
+{
+	Novice::DrawSprite(0, 0, Gameoverimage[GameoverAnimation], 1, 1, 0.0f, WHITE);
 }

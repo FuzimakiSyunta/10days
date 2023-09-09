@@ -107,6 +107,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Titleanime->TitleFrame = 0;
 	Titleanime->ButtonAnimation = 0;
 	Titleanime->ButtonFrame = 0;
+	Titleanime->GameoverAnimation = 0;
+	Titleanime->GameoverFrame = 0;
 #pragma endregion
 
 	int playerHP = 3;//自機の体力
@@ -135,11 +137,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (GameScene.scene == 0) {
 				//タイトルアニメーション
 				Titleanime->Update();
+				Titleanime->GameoverInitialize();//ゲームオーバーアニメーション初期化
 				if (Novice::IsTriggerButton(0, kPadButton11)) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
-						Titleanime->Initialize();
 						playerHP = 3;
 						enemyHP = 3;
 						degreeH = 0;
@@ -382,6 +384,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 		    case 3: //ゲームオーバー
 			    if (GameScene.scene == 3) {
+					Titleanime->GameoverUpdate();
 				    if (Novice::IsTriggerButton(0, kPadButton11)) {
 					    GamePhase.phase = 0;
 					    degreeH = 0;
@@ -431,6 +434,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		case 3:
 			if (GameScene.scene == 3) {
+				Titleanime->GameoverDraw();
 				Novice::ScreenPrintf(100, 100, "GAME OVER");
 			}
 		}
