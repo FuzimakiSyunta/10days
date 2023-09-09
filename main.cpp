@@ -43,7 +43,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetW(1);
 		player[i]->SetH(1);
 	}
-	int Animation = false;
+	
 	//delete player;
 
 #pragma endregion
@@ -281,22 +281,22 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 							    ////////////////////////////////////////////////////////////////////
 						    }
-						    if (Animation == true) {
+						    
 							    for (int i = 0; i < Players; i++) {
 								    player[i]->Update();
 							    }
 
 							    if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
 								    GameScene.scene = 0;
-								    Animation = false;
+								   
 								    break;
 							    }
-						    }
+						    
 #pragma endregion
 
 #pragma region 自機の陣形変更
 						    if (GamePhase.phase == 0) {
-							    Animation = true;
+							    
 							    if (Novice::IsTriggerButton(0, kPadButton2)) { // W
 								    for (int i = 0; i < 5; i++) {
 									    player[i]->MoveUpdate();
