@@ -22,6 +22,11 @@ public:
 	void SetX(int PosX_);
 	void SetY(int PosY_);
 	void SetSpeed(int Speed_);
+	void Setformation(int formation_);
+	void SetTimever(int TimePosW_);
+
+	int Getformation() { return formation_; };
+	int GetTimever() { return TimePosW_; };
 
 private:
 

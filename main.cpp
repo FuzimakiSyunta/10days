@@ -52,6 +52,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		enemy[i]->SetY(0.0f);
 		enemy[i]->SetSpeed(5);
 	}
+	enemy[0]->Setformation(0);
+	enemy[0]->SetTimever(1080);
 
 #pragma endregion
 
@@ -102,6 +104,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma endregion
 
 	int playerHP = 3;//自機の体力
+	int enemyHP = 3;
+
+	int PlayerFormation = 0;
 
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
@@ -129,6 +134,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
 						Titleanime->Initialize();
+						PlayerFormation = 0;
 					}
 					curtainDown = true;
 						break;
@@ -237,24 +243,28 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma region 自機の陣形変更
 						if (GamePhase.phase == 0) {
 							Animation = true;
-							if (Novice::IsTriggerButton(0, kPadButton2)) {
+							if (Novice::IsTriggerButton(0, kPadButton2)) {//W
 								for (int i = 0; i < 5; i++) {
 									player[i]->MoveUpdate();
+									PlayerFormation = 1;
 								}
 							}
-							if (Novice::IsTriggerButton(0, kPadButton3)) {
+							if (Novice::IsTriggerButton(0, kPadButton3)) {//×
 								for (int i = 0; i < 5; i++) {
 									player[i]->SecondMoveUpdate();
+									PlayerFormation = 2;
 								}
 							}
-							if (Novice::IsTriggerButton(0, kPadButton0)) {
+							if (Novice::IsTriggerButton(0, kPadButton0)) {//〇
 								for (int i = 0; i < 5; i++) {
 									player[i]->ThirdMoveUpdate();
+									PlayerFormation = 3;
 								}
 							}
 							if (Novice::IsTriggerButton(0, kPadButton1)) {
 								for (int i = 0; i < 5; i++) {
 									player[i]->Initialize();
+									PlayerFormation = 0;
 								}
 							}
 						}
@@ -267,6 +277,40 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 							enemy[i]->Update();
 						}
+#pragma endregion
+
+#pragma region 勝負
+
+						if (enemy[0]->GetTimever() <= 0) {
+							if (enemy[0]->Getformation() == 1) {//敵が逆への字で左ボタン
+								if (PlayerFormation == 1) {
+
+								}
+								else
+								{
+									playerHP -= 1;
+								}
+							}
+							if (enemy[0]->Getformation() == 2) {//敵がへの字で上ボタン
+								if (PlayerFormation == 2) {
+
+								}
+								else
+								{
+									playerHP -= 1;
+								}
+							}
+							if (enemy[0]->Getformation() == 3) {//敵がギザギザで右ボタン
+								if (PlayerFormation == 3) {
+
+								}
+								else
+								{
+									playerHP -= 1;
+								}
+							}
+						}
+
 #pragma endregion
 						break;
 					} else if (degreeH >= 750) {
@@ -325,9 +369,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::ScreenPrintf(0, 20, "%d,%d", player[0]->GetX(), player[0]->GetY());
 			Novice::ScreenPrintf(0, 100, "%d,%d", player[1]->GetX(), player[1]->GetY());
 			Novice::ScreenPrintf(0, 120, "%d,%d", player[2]->GetX(), player[2]->GetY());
+			Novice::ScreenPrintf(0, 140, "PlayerHP%d,PlayerFormation%d",playerHP,PlayerFormation);
+			Novice::ScreenPrintf(0, 160, "EnemyFormation%d", enemy[0]->Getformation());
 
 			Novice::ScreenPrintf(0, 40, "%d,%d", GameScene.scene);
-			Novice::ScreenPrintf(0, 90, "%d", playerHP);
 #pragma endregion
 
 			///
