@@ -107,10 +107,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Titleanime->TitleFrame = 0;
 	Titleanime->ButtonAnimation = 0;
 	Titleanime->ButtonFrame = 0;
+	Titleanime->GameoverAnimation = 0;
+	Titleanime->GameoverFrame = 0;
 #pragma endregion
 
 	int playerHP = 3;//自機の体力
-	int enemyHP = 3;
+	int enemyHP = 3;//敵の体力
 
 	int PlayerFormation = 0;
 
@@ -167,7 +169,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
-						Titleanime->Initialize();
 						playerHP = 3;
 						enemyHP = 3;
 						degreeH = 0;
@@ -363,6 +364,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 									    } else {
 										    playerHP -= 1;
 										    enemyHP -= 1;
+											enemy[0]->SharkAttack();
 									    }
 								    }
 								    if (enemy[0]->Getformation() == 2) { // 敵がへの字で上ボタン
@@ -371,6 +373,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 									    } else {
 										    playerHP -= 1;
 										    enemyHP -= 1;
+											enemy[0]->SharkAttack();
 									    }
 								    }
 								    if (enemy[0]->Getformation() == 3) { // 敵がギザギザで右ボタン
@@ -379,6 +382,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 									    } else {
 										    playerHP -= 1;
 										    enemyHP -= 1;
+											enemy[0]->SharkAttack();
 									    }
 								    }
 							    }
@@ -411,6 +415,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 		    case 3: //ゲームオーバー
 			    if (GameScene.scene == 3) {
+					Titleanime->GameoverUpdate();
 				    if (Novice::IsTriggerButton(0, kPadButton11)) {
 					    GamePhase.phase = 0;
 					    degreeH = 0;
@@ -463,6 +468,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		case 3:
 			if (GameScene.scene == 3) {
+				Titleanime->GameoverDraw();
 				Novice::ScreenPrintf(100, 100, "GAME OVER");
 			}
 		}
@@ -474,7 +480,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::ScreenPrintf(0, 100, "%d,%d", player[1]->GetX(), player[1]->GetY());
 			Novice::ScreenPrintf(0, 120, "%d,%d", player[2]->GetX(), player[2]->GetY());
 			Novice::ScreenPrintf(0, 140, "PlayerHP%d,PlayerFormation%d",playerHP,PlayerFormation);
-			Novice::ScreenPrintf(0, 160, "EnemyFormation%d", enemy[0]->Getformation());
+			Novice::ScreenPrintf(0, 160, "EnemyHP%d,EnemyFormation%d", enemyHP,enemy[0]->Getformation());
 
 			Novice::ScreenPrintf(0, 40, "%d,%d", GameScene.scene);
 #pragma endregion
