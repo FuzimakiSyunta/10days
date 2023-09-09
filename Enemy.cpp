@@ -19,6 +19,7 @@ void Enemy::Initialize() {
 	formation3_ = false;
 	Start_ = false;
 	TimePosW_ = 1080;
+	Attack_ = false;
 };
 
 void Enemy::Update() {
@@ -29,10 +30,12 @@ void Enemy::Update() {
 	}
 	if (PosY_[0] >= 300) {
 		Start_ = true;
-		
 	}
 	if (Start_ == true) {
 		frame_ += 1;
+	}
+	if (frame_ == 5) {
+		Attack_ = false;
 	}
 	if (frame_ >= 60) {
 		timer_ += 1;
@@ -142,14 +145,6 @@ void Enemy::Draw(){
 		WHITE
 	);
 
-	//Novice::DrawBox(
-	//	PosX_, PosY_,
-	//	50, 50,
-	//	0.0f,
-	//	BLACK,
-	//	kFillModeSolid
-	//);
-
 	//時間制限バー描画
 	Novice::DrawBox(
 		480, 860,
@@ -159,10 +154,25 @@ void Enemy::Draw(){
 		kFillModeSolid
 	);
 
+	if (Attack_ == true) {
+		Novice::DrawSprite(
+			0, 0,
+			Damage_,
+			1.0f, 1.0f,
+			0.0f,
+			WHITE
+		);
+	}
+	
+
+
 	Novice::ScreenPrintf(0, 60, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_[0], PosY_[0], Speed_);
-	Novice::ScreenPrintf(0, 80, "frame%d,timer%d,", frame_, timer_);
+	Novice::ScreenPrintf(0, 80, "frame%d,timer%d,Damage%d", frame_, timer_);
 }
 
+void Enemy::SharkAttack() {
+	Attack_ = true;
+}
 //セッター
 void Enemy::SetX(int PosX_) { this->PosX_[4] = PosX_; }
 
@@ -173,4 +183,3 @@ void Enemy::SetSpeed(int Speed_) { this->Speed_ = Speed_; }
 void Enemy::Setformation(int formation_) { this->formation_ = formation_; }
 
 void Enemy::SetTimever(int TimePosW_) { this->TimePosW_ = TimePosW_; }
-

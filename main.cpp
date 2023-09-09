@@ -104,7 +104,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma endregion
 
 	int playerHP = 3;//自機の体力
-	int enemyHP = 3;
+	int enemyHP = 3;//敵の体力
 
 	int PlayerFormation = 0;
 
@@ -284,20 +284,22 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						if (enemy[0]->GetTimever() <= 0) {
 							if (enemy[0]->Getformation() == 1) {//敵が逆への字で左ボタン
 								if (PlayerFormation == 1) {
-
+									
 								}
 								else
 								{
 									playerHP -= 1;
+									enemy[0]->SharkAttack();
 								}
 							}
 							if (enemy[0]->Getformation() == 2) {//敵がへの字で上ボタン
 								if (PlayerFormation == 2) {
-
+									
 								}
 								else
 								{
 									playerHP -= 1;
+									enemy[0]->SharkAttack();
 								}
 							}
 							if (enemy[0]->Getformation() == 3) {//敵がギザギザで右ボタン
@@ -307,6 +309,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								else
 								{
 									playerHP -= 1;
+									enemy[0]->SharkAttack();
 								}
 							}
 						}
@@ -370,7 +373,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::ScreenPrintf(0, 100, "%d,%d", player[1]->GetX(), player[1]->GetY());
 			Novice::ScreenPrintf(0, 120, "%d,%d", player[2]->GetX(), player[2]->GetY());
 			Novice::ScreenPrintf(0, 140, "PlayerHP%d,PlayerFormation%d",playerHP,PlayerFormation);
-			Novice::ScreenPrintf(0, 160, "EnemyFormation%d", enemy[0]->Getformation());
+			Novice::ScreenPrintf(0, 160, "EnemyHP%d,EnemyFormation%d", enemyHP,enemy[0]->Getformation());
 
 			Novice::ScreenPrintf(0, 40, "%d,%d", GameScene.scene);
 #pragma endregion
