@@ -61,7 +61,7 @@ void Enemy::Update() {
 	}
 	if (formation_ == 1) {
 		TimePosW_ -= 6;
-		if (formation1_ == false) {
+		if (formation1_ == false) { //逆への字
 			PosY_[0] = 300.0f;//真ん中
 			PosY_[1] = 200.0f;//右
 			PosY_[2] = 200.0f;//左
@@ -74,7 +74,7 @@ void Enemy::Update() {
 	}
 	if (formation_ == 2) {
 		TimePosW_ -= 6;
-		if (formation2_ == false) {
+		if (formation2_ == false) { //への字
 			PosY_[0] = 100.0f;//真ん中
 			PosY_[1] = 200.0f;//右
 			PosY_[2] = 200.0f;//左
@@ -87,7 +87,7 @@ void Enemy::Update() {
 	}
 	if (formation_ == 3) {
 		TimePosW_ -= 6;
-		if (formation3_ == false) {
+		if (formation3_ == false) {//ギザギザ
 			PosY_[0] = 200.0f;//真ん中
 			PosY_[1] = 100.0f;//右
 			PosY_[2] = 100.0f;//左
@@ -160,12 +160,17 @@ void Enemy::Draw(){
 	);
 
 	Novice::ScreenPrintf(0, 60, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_[0], PosY_[0], Speed_);
-	Novice::ScreenPrintf(0, 80, "frame%d,timer%d,Formation%d", frame_, timer_,formation_);
+	Novice::ScreenPrintf(0, 80, "frame%d,timer%d,", frame_, timer_);
 }
 
 //セッター
-void Enemy::SetX(int PosX_) { this->PosX_[0] = PosX_; }
+void Enemy::SetX(int PosX_) { this->PosX_[4] = PosX_; }
 
-void Enemy::SetY(int PosY_) { this->PosY_[0] = PosY_; }
+void Enemy::SetY(int PosY_) { this->PosY_[4] = PosY_; }
 
 void Enemy::SetSpeed(int Speed_) { this->Speed_ = Speed_; }
+
+void Enemy::Setformation(int formation_) { this->formation_ = formation_; }
+
+void Enemy::SetTimever(int TimePosW_) { this->TimePosW_ = TimePosW_; }
+
