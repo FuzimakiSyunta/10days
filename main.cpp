@@ -29,9 +29,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	//敵のフェーズの番号
 	int enemyPhaseNum = 0;
-
-	//アイテム2用の変数
-	int isItem2 = false;
+	
+	//難易度
+	int level = 0;
 
 #pragma region 自機の変数
 	const int Players = 5;
@@ -43,7 +43,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetW(1);
 		player[i]->SetH(1);
 	}
-	int Animation = false;//アニメーションしてるかフラグ
 
 	//delete player;
 
@@ -136,7 +135,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (GameScene.scene == 0) {
 				//タイトルアニメーション
 				Titleanime->Update();
-				if (Novice::IsTriggerButton(0, kPadButton11)) {
+				//難易度：イージー
+				if (Novice::IsTriggerButton(0, kPadButton12)) {
+					for (int i = 0; i < Enemys; i++) {
+						enemy[i]->Initialize();
+						player[i]->Initialize(); // Player初期化
+						Titleanime->Initialize();
+						playerHP = 3;
+						enemyHP = 3;
+						degreeH = 0;
+						PlayerFormation = 0;
+					}
+					curtainDown = true;
+				}
+				//難易度：ノーマル
+				if (Novice::IsTriggerButton(0, kPadButton13)) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
@@ -148,6 +161,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					}
 					curtainDown = true;
 						break;
+				}
+				//難易度：ハード
+				if (Novice::IsTriggerButton(0, kPadButton11)) {
+					for (int i = 0; i < Enemys; i++) {
+						enemy[i]->Initialize();
+						player[i]->Initialize(); // Player初期化
+						Titleanime->Initialize();
+						playerHP = 3;
+						enemyHP = 3;
+						degreeH = 0;
+						PlayerFormation = 0;
+					}
+					    curtainDown = true;
 				}
 			}
 			if (curtainDown == true) {
@@ -280,22 +306,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 							    ////////////////////////////////////////////////////////////////////
 						    }
-						    if (Animation == true) {
 							    for (int i = 0; i < Players; i++) {
 								    player[i]->Update();
 							    }
 
 							    if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
 								    GameScene.scene = 0;
-								    Animation = false;
 								    break;
 							    }
-						    }
 #pragma endregion
 
 #pragma region 自機の陣形変更
 						    if (GamePhase.phase == 0) {
-							    Animation = true;
 							    if (Novice::IsTriggerButton(0, kPadButton2)) { // W
 								    for (int i = 0; i < 5; i++) {
 									    player[i]->MoveUpdate();
@@ -374,6 +396,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 			case 2: // ゲームクリア
 				if (GameScene.scene == 2) {
+				    /*for (int i = 0; i < 5; i++) {
+					    player[i]->MoveUpdate();
+					    player[i]->SecondMoveUpdate();
+					    player[i]->ThirdMoveUpdate();
+					    player[i]->ThirdMoveUpdate();
+				    }*/
 					if (Novice::IsTriggerButton(0, kPadButton11)) {
 						GamePhase.phase = 0;
 						degreeH = 0;
@@ -428,6 +456,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 2:
 			if (GameScene.scene == 2) {
 				Novice::ScreenPrintf(100, 100, "GAME CLEAR");
+				    for (int i = 0; i < Players; i++) {
+					    player[i]->Draw(); // Player描画
+				    }
 			}
 			break;
 		case 3:
