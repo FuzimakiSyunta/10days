@@ -13,7 +13,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, 1920, 1080);
-	// Novice::SetWindowMode(kFullscreen);
+	//Novice::SetWindowMode(kFullscreen);
 
 	// 背景用の変数
 	int backGround1 = Novice::LoadTexture("./Resource/Backgraund1.png");
