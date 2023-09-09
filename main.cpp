@@ -37,7 +37,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetW(1);
 		player[i]->SetH(1);
 	}
-	int Animation = false;//アニメーションしてるかフラグ
 
 	//delete player;
 
@@ -128,7 +127,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
-						Titleanime->Initialize();
 					}
 					curtainDown = true;
 						break;
@@ -220,15 +218,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							}
 
 							////////////////////////////////////////////////////////////////////
-						}
-						if (Animation == true) {
 							for (int i = 0; i < Players; i++) {
 								player[i]->Update();
 							}
 
 							if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
 								GameScene.scene = 0;
-								Animation = false;
 								break;
 							}
 						}
@@ -236,7 +231,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma region 自機の陣形変更
 						if (GamePhase.phase == 0) {
-							Animation = true;
 							if (Novice::IsTriggerButton(0, kPadButton2)) {
 								for (int i = 0; i < 5; i++) {
 									player[i]->MoveUpdate();
