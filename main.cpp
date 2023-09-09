@@ -30,6 +30,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//敵のフェーズの番号
 	int enemyPhaseNum = 0;
 
+	//アイテム2用の変数
+	int isItem2 = false;
+
 #pragma region 自機の変数
 	const int Players = 5;
 	Player* player[Players] = {new Player, new Player, new Player, new Player, new Player};
@@ -259,10 +262,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							    if (Novice::IsTriggerButton(0, kPadButton13) &&
 							        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
 							        Novice::IsTriggerButton(0, kPadButton11) == 0) {
-								    // 次の入力待機時間が少し長くなる処理
+								    // 次の敵の勝負回数が2回になる処理
 
 								    degreeH += 150;
-								    enemyHP = 3;
+								    enemyHP = 2;
 								    GamePhase.phase = 0;
 							    }
 							    if (Novice::IsTriggerButton(0, kPadButton11) &&
