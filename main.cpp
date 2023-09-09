@@ -174,7 +174,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						degreeH = 0;
 						PlayerFormation = 0;
 					}
-					    curtainDown = true;
+					curtainDown = true;
 				}
 			}
 			if (curtainDown == true) {
