@@ -13,11 +13,13 @@ public:
 	/// 更新
 	/// </summary>
 	void Update();
+	void SharkAttack();
 
 	/// <summary>
 	/// 描画
 	/// </summary>
 	void Draw();
+	
 
 	void SetX(int PosX_);
 	void SetY(int PosY_);
@@ -33,7 +35,6 @@ private:
 	float PosX_[5]; //敵のX座標
 	float PosY_[5]; //敵のY座標
 	int Speed_; //敵のスピード
-	int Shark_ = Novice::LoadTexture("./Resource./Shark.png"); //テクスチャ
 	int frame_; //フレーム
 	int timer_; //タイマー
 	int formation_; //フォーメーション
@@ -41,6 +42,11 @@ private:
 	int formation2_; //2個目のフォーメーションフラグ
 	int formation3_; //3個目のフォーメーションフラグ
 	int Start_; //フレームを始めるためのフラグ
+	int Attack_;
 
 	int TimePosW_;//時間バーの横の長さ
+	
+	int Shark_ = Novice::LoadTexture("./Resource./Shark.png"); //テクスチャ
+	int Damage_ = Novice::LoadTexture("./Resource./Damege.png");
+
 };
