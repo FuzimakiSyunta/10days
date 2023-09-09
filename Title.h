@@ -25,13 +25,15 @@ public:
 	//ボタンのアニメーション
 	int ButtonFrame;
 	int ButtonAnimation;
+	
+
 
 private:
 	
 	//タイトル画像読み込み
-	int Titleimage[3] = { Novice::LoadTexture("./Resource./Title.png"), Novice::LoadTexture("./Resource./Title2.png"), };
+	int Titleimage[2] = { Novice::LoadTexture("./Resource./Title.png"), Novice::LoadTexture("./Resource./Title2.png"), };
 	//Bボタンで始める
 	int Buttonimage[2]= { Novice::LoadTexture("./Resource./BButton.png"), Novice::LoadTexture("./Resource./BButton2.png"), };
-
+	
 };
 
