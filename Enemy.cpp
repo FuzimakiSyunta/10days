@@ -147,7 +147,7 @@ void Enemy::Draw(){
 
 	//éûä‘êßå¿ÉoÅ[ï`âÊ
 	Novice::DrawBox(
-		480, 860,
+		480, 900,
 		TimePosW_, 100,
 		0.0f,
 		RED,
