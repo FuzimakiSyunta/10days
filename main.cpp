@@ -314,7 +314,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 							    ////////////////////////////////////////////////////////////////////
 						    }
-							    for (int i = 0; i < Players; i++) {
+							    for (int i = 0; i < 5; i++) {
 								    player[i]->Update();
 							    }
 
@@ -446,6 +446,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				Novice::DrawBox(0, curtainY, 1920, 1080, 0.0f, GREEN, kFillModeSolid);
 				break;
 			case 1:
+				
 				if (backGroundNum == 0) {
 					Novice::DrawSprite(0, 0, backGround1, 1, 1, 0.0f, WHITE);
 				} else if (backGroundNum == 1) {
@@ -497,7 +498,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::ScreenPrintf(0, 120, "%d,%d", player[2]->GetX(), player[2]->GetY());
 			Novice::ScreenPrintf(0, 140, "PlayerHP%d,PlayerFormation%d",playerHP,PlayerFormation);
 			Novice::ScreenPrintf(0, 160, "EnemyHP%d,EnemyFormation%d", enemyHP,enemy[0]->Getformation());
-
 			Novice::ScreenPrintf(0, 40, "%d,%d", GameScene.scene);
 #pragma endregion
 
