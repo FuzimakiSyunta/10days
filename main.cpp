@@ -177,7 +177,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						degreeH = 0;
 						PlayerFormation = 0;
 					}
-					    curtainDown = true;
+					curtainDown = true;
 				}
 			}
 			if (curtainDown == true) {
@@ -267,8 +267,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							    if (enemyHP <= 0) {
 								    degreeH += 150;
 								    if (degreeH <= 300) {
+									    for (int i = 0; i < Enemys; i++) {
+										    enemy[i]->Initialize();
+									    }
 									    GamePhase.phase = 1;
 								    } else if (300 < degreeH < 750) {
+									    for (int i = 0; i < Enemys; i++) {
+										    enemy[i]->Initialize();
+									    }
 									    enemyHP = 3;
 								    }
 							    }
@@ -470,9 +476,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (GameScene.scene == 2) {
 				Titleanime->GoalDraw();
 				Novice::ScreenPrintf(100, 100, "GAME CLEAR");
-				    for (int i = 0; i < Players; i++) {
-					    player[i]->Draw(); // Player描画
-				    }
+			}
+			for (int i = 0; i < Players; i++) {
+				player[i]->Draw(); // Player描画
 			}
 			break;
 		case 3:
