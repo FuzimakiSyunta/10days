@@ -13,12 +13,6 @@ void TitleAction::GameoverInitialize()
 	GameoverFrame = 0;
 	GameoverAnimation = 0;
 }
-void TitleAction::GoalInitialize()
-{
-	GoalFrame = 0;
-	GoalAnimation = 0;
-}
-
 
 
 void TitleAction::Update()
@@ -58,20 +52,6 @@ void TitleAction::GameoverUpdate()
 	
 }
 
-void TitleAction::GoalUpdate()
-{
-	//ゴールアニメーション
-	if (GoalFrame >= 20) {
-		GoalAnimation++;
-		GoalFrame = 0;
-	}
-	if (GameoverAnimation >= 5) {
-		GameoverAnimation = 4;
-	}
-	GameoverFrame++;
-}
-
-
 void TitleAction::Draw()
 {
 	Novice::DrawSprite(0, 0, Titleimage[TitleAnimation], 1, 1, 0.0f, WHITE);
@@ -81,9 +61,4 @@ void TitleAction::Draw()
 void TitleAction::GameoverDraw()
 {
 	Novice::DrawSprite(0, 0, Gameoverimage[GameoverAnimation], 1, 1, 0.0f, WHITE);
-}
-
-void TitleAction::GoalDraw()
-{
-	Novice::DrawSprite(0, 0, Goalimage[GoalAnimation], 1, 1, 0.0f, WHITE);
 }

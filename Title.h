@@ -8,7 +8,6 @@ public:
 	/// </summary>
 	void Initialize();
 	void GameoverInitialize();
-	void GoalInitialize();
 
 	/// <summary>
 	/// 更新
@@ -17,8 +16,6 @@ public:
 
 	void GameoverUpdate();
 
-	void GoalUpdate();
-
 
 	/// <summary>
 	/// 描画
@@ -26,8 +23,6 @@ public:
 	void Draw();
 
 	void GameoverDraw();
-
-	void GoalDraw();
 
 	//タイトルのアニメーション
 	int TitleFrame;
@@ -38,9 +33,7 @@ public:
 	//ゲームオーバーアニメーション
 	int GameoverFrame;
 	int GameoverAnimation;
-	//ゴールアニメーション
-	int GoalFrame;
-	int GoalAnimation;
+	
 
 private:
 	
@@ -52,10 +45,6 @@ private:
 	int Gameoverimage[8] = { Novice::LoadTexture("./Resource./Gameover1.png"),Novice::LoadTexture("./Resource./Gameover2.png"),Novice::LoadTexture("./Resource./Gameover3.png"),Novice::LoadTexture("./Resource./Gameover4.png"),
 		Novice::LoadTexture("./Resource./Gameover5.png"),Novice::LoadTexture("./Resource./Gameover6.png"),Novice::LoadTexture("./Resource./Gameover7.png"),
 	Novice::LoadTexture("./Resource./Gameover8.png"), };
-	//Goal
-	int Goalimage[5] = { Novice::LoadTexture("./Resource/Goal1.png"),  Novice::LoadTexture("./Resource/Goal2.png"),
-	 Novice::LoadTexture("./Resource/Goal3.png"),  Novice::LoadTexture("./Resource/Goal4.png"), Novice::LoadTexture("./Resource/Goal5.png"), };
-	
 	
 };
 

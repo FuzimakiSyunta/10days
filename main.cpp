@@ -33,8 +33,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//難易度
 	int level = 0;
 
-	
-
 #pragma region 自機の変数
 	const int Players = 5;
 	Player* player[Players] = {new Player, new Player, new Player, new Player, new Player};
@@ -111,8 +109,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Titleanime->ButtonFrame = 0;
 	Titleanime->GameoverAnimation = 0;
 	Titleanime->GameoverFrame = 0;
-	Titleanime->GoalAnimation = 0;
-	Titleanime->GoalFrame = 0;
 #pragma endregion
 
 	int playerHP = 3;//自機の体力
@@ -147,6 +143,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
+						Titleanime->Initialize();
 						playerHP = 3;
 						enemyHP = 3;
 						degreeH = 0;
@@ -159,6 +156,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
+						Titleanime->Initialize();
 						playerHP = 3;
 						enemyHP = 3;
 						degreeH = 0;
@@ -210,7 +208,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					    curtainFlame = 0;
 				    }
 				    if (Novice::IsTriggerButton(0, kPadButton1)) {
-					    for (int i = 0; i < Players; i++) {
+					    for (int i = 0; i < 5; i++) {
 							player[i]->Initialize();
 					    }
 				    }
@@ -319,6 +317,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							    for (int i = 0; i < 5; i++) {
 								    player[i]->Update();
 							    }
+
+							    if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+								    GameScene.scene = 0;
+								    break;
+							    }
 #pragma endregion
 
 #pragma region 自機の陣形変更
@@ -404,32 +407,31 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 			case 2: // ゲームクリア
 				if (GameScene.scene == 2) {
-					Titleanime->GoalUpdate();//ゴールアニメーション
+				    /*for (int i = 0; i < 5; i++) {
+					    player[i]->MoveUpdate();
+					    player[i]->SecondMoveUpdate();
+					    player[i]->ThirdMoveUpdate();
+					    player[i]->ThirdMoveUpdate();
+				    }*/
 					if (Novice::IsTriggerButton(0, kPadButton11)) {
-						Titleanime->GoalInitialize();
 						GamePhase.phase = 0;
 						degreeH = 0;
 					    playerHP = 3;
 						GameScene.scene = 0;
 					}
 				}
-				break;
 		    case 3: //ゲームオーバー
 			    if (GameScene.scene == 3) {
 					Titleanime->GameoverUpdate();
 				    if (Novice::IsTriggerButton(0, kPadButton11)) {
-						
-						Titleanime->GameoverInitialize();
-
 					    GamePhase.phase = 0;
 					    degreeH = 0;
 						
 					    GameScene.scene = 0;
 				    }
 				}
-				break;
 
-		}
+			}
 
 			///
 			/// ↑更新処理ここまで
@@ -472,10 +474,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			Novice::DrawBox(0, curtainY, 1920, 1080, 0.0f, GREEN, kFillModeSolid);
 
-			
+			break;
 		case 2:
 			if (GameScene.scene == 2) {
-				Titleanime->GoalDraw();
 				Novice::ScreenPrintf(100, 100, "GAME CLEAR");
 			}
 			for (int i = 0; i < Players; i++) {
@@ -487,7 +488,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				Titleanime->GameoverDraw();
 				Novice::ScreenPrintf(100, 100, "GAME OVER");
 			}
-			break;
 		}
 
 #pragma region デバックコード
@@ -512,7 +512,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (preKeys[DIK_ESCAPE] == 0 && keys[DIK_ESCAPE] != 0) {
 				break;
 			}
-	}
+		}
 
 		// ライブラリの終了
 		Novice::Finalize();
