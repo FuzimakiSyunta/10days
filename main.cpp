@@ -203,7 +203,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					    curtainY -= 2;
 					    if (curtainY <= -1080) {
 							curtainY = -1080;
-							curtainUp == false;
+							curtainUp = false;
 					    }
 					    curtainFlame = 0;
 				    }
@@ -266,12 +266,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								    degreeH += 150;
 								    if (degreeH <= 300) {
 									    for (int i = 0; i < Enemys; i++) {
-										    enemy[i]->Initialize();
+											enemy[i]->Initialize();
 									    }
 									    GamePhase.phase = 1;
 								    } else if (300 < degreeH < 750) {
 									    for (int i = 0; i < Enemys; i++) {
-										    enemy[i]->Initialize();
+											enemy[i]->Initialize();
 									    }
 									    enemyHP = 3;
 								    }
@@ -455,7 +455,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					player[i]->Draw(); // Player描画
 				}
 			    if (GamePhase.phase == 0) {
-				    enemy[0]->Draw(); // Enemy描画
+					enemy[0]->Draw(); // Enemy描画
 				}
 				if (playerHP >= 3) {
 					Novice::DrawSprite(1600, 700, Hart, 1, 1, 0.0f, WHITE);//Heart描画
