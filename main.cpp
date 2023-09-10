@@ -452,11 +452,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				} else if (backGroundNum == 1) {
 					Novice::DrawSprite(0, 0, backGround2, 1, 1, 0.0f, WHITE);
 				}
+				if (GamePhase.phase == 0) {
+					enemy[0]->Draw(); // Enemy描画
+				}
 				for (int i = 0; i < Players; i++) {
 					player[i]->Draw(); // Player描画
-				}
-			    if (GamePhase.phase == 0) {
-					enemy[0]->Draw(); // Enemy描画
 				}
 				if (playerHP >= 3) {
 					Novice::DrawSprite(1600, 700, Hart, 1, 1, 0.0f, WHITE);//Heart描画
