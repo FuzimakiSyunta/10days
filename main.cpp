@@ -112,6 +112,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma endregion
 
 	int playerHP = 3;//自機の体力
+	int Hart = Novice::LoadTexture("./Resource./Hart.png");
 	int enemyHP = 3;//敵の体力
 
 	int PlayerFormation = 0;
@@ -455,6 +456,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 			    if (GamePhase.phase == 0) {
 				    enemy[0]->Draw(); // Enemy描画
+				}
+				if (playerHP >= 3) {
+					Novice::DrawSprite(1600, 700, Hart, 1, 1, 0.0f, WHITE);//Heart描画
+				}
+				if (playerHP >= 2) {
+					Novice::DrawSprite(1600, 800, Hart, 1, 1, 0.0f, WHITE);//Heart描画
+				}
+				if (playerHP >= 1) {
+					Novice::DrawSprite(1600, 900, Hart, 1, 1, 0.0f, WHITE);//Heart描画
 				}
 
 			///進行度バーの描画
