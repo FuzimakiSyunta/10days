@@ -34,14 +34,14 @@ void Enemy::Update() {
 	if (Start_ == true) {
 		frame_ += 1;
 	}
-	if (frame_ == 5) {
+	if (frame_ == 10) {
 		Attack_ = false;
 	}
 	if (frame_ >= 60) {
 		timer_ += 1;
 		frame_ = 0;
 	}
-	if (timer_ >= 3) {
+	if (timer_ >= 2) {
 		timer_ = 0;
 		Speed_ = 0;
 		TimePosW_ = 1080;
@@ -63,7 +63,7 @@ void Enemy::Update() {
 		}
 	}
 	if (formation_ == 1) {
-		TimePosW_ -= 6;
+		TimePosW_ -= 9;
 		if (formation1_ == false) { //逆への字
 			PosY_[0] = 300.0f;//真ん中
 			PosY_[1] = 200.0f;//右
@@ -76,7 +76,7 @@ void Enemy::Update() {
 		}
 	}
 	if (formation_ == 2) {
-		TimePosW_ -= 6;
+		TimePosW_ -= 9;
 		if (formation2_ == false) { //への字
 			PosY_[0] = 100.0f;//真ん中
 			PosY_[1] = 200.0f;//右
@@ -89,7 +89,7 @@ void Enemy::Update() {
 		}
 	}
 	if (formation_ == 3) {
-		TimePosW_ -= 6;
+		TimePosW_ -= 9;
 		if (formation3_ == false) {//ギザギザ
 			PosY_[0] = 200.0f;//真ん中
 			PosY_[1] = 100.0f;//右
