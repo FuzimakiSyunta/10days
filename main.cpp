@@ -151,6 +151,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				Titleanime->GoalInitialize();//Goal初期化
 				for (int i = 0; i < Players; i++) {
 					player[i]->Initialize(); // Player初期化
+					enemy[0]->ExplosionInitialize();
 				}
 				//難易度：イージー
 				if (Novice::IsTriggerButton(0, kPadButton12)) {
@@ -380,6 +381,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								    if (enemy[0]->Getformation() == 1) { // 敵が逆への字で左ボタン
 									    if (PlayerFormation == 1) {
 										    enemyHP -= 1;
+											enemy[0]->ExplosionFlag();
 									    } else {
 										    playerHP -= 1;
 										    enemyHP -= 1;
@@ -390,6 +392,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								    if (enemy[0]->Getformation() == 2) { // 敵がへの字で上ボタン
 									    if (PlayerFormation == 2) {
 										    enemyHP -= 1;
+											enemy[0]->ExplosionFlag();
 									    } else {
 										    playerHP -= 1;
 										    enemyHP -= 1;
@@ -400,6 +403,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								    if (enemy[0]->Getformation() == 3) { // 敵がギザギザで右ボタン
 									    if (PlayerFormation == 3) {
 										    enemyHP -= 1;
+											enemy[0]->ExplosionFlag();
 									    } else {
 										    playerHP -= 1;
 										    enemyHP -= 1;

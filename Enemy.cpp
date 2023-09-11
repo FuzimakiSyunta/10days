@@ -20,7 +20,14 @@ void Enemy::Initialize() {
 	Start_ = false;
 	TimePosW_ = 1080;
 	Attack_ = false;
+	ExplosionFlag_ = false;
 };
+
+void Enemy::ExplosionInitialize() {
+	ExplosionFrame = 0;
+	ExplosionAnimation = 0;
+	
+}
 
 void Enemy::Update() {
 	for (int i = 0; i < 5; i++) {
@@ -101,6 +108,22 @@ void Enemy::Update() {
 			formation3_ = true;
 		}
 	}
+	if (ExplosionFlag_ == true) {
+		ExplosionFrame++;
+		if (ExplosionFrame >= 5) {
+			ExplosionAnimation++;
+			ExplosionFrame = 0;
+		}
+		if (ExplosionAnimation >= 6) {
+			ExplosionAnimation = 0;
+			ExplosionFrame = 0;
+			ExplosionFlag_ = false;
+		}
+	}
+}
+
+void Enemy::ExplosionFlag() {
+	ExplosionFlag_ = true;
 }
 
 void Enemy::Draw(){
@@ -163,16 +186,31 @@ void Enemy::Draw(){
 			WHITE
 		);
 	}
-	
+
+	if (ExplosionFlag_ == true) {
+		Novice::DrawSprite(
+			800, 100,
+			Explosion_[ExplosionAnimation],
+			10,10, 
+			0.0f,
+			WHITE
+		);
+	}
 
 
 	Novice::ScreenPrintf(0, 60, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_[0], PosY_[0], Speed_);
 	Novice::ScreenPrintf(0, 80, "frame%d,timer%d,Damage%d", frame_, timer_);
+	Novice::ScreenPrintf(0, 180, "ExplosionFlag_%d,ExplosionFrame%d,ExplosionAnimation%d", ExplosionFlag_, ExplosionFrame, ExplosionAnimation);
 }
 
 void Enemy::SharkAttack() {
 	Attack_ = true;
 }
+
+void Enemy::ExplosionDraw() {
+
+}
+
 //セッター
 void Enemy::SetX(int PosX_) { this->PosX_[4] = PosX_; }
 
