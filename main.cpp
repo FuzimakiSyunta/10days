@@ -36,6 +36,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//リソース用の変数
 	int itemIcon = Novice::LoadTexture("./Resource/Checkpoint.png");
 	int enemyIcon = Novice::LoadTexture("./Resource/Checkpoint2.png");
+	int goalIcon = Novice::LoadTexture("./Resource/GoalFrag.png");
 
 #pragma region 自機の変数
 	const int Players = 5;
@@ -481,6 +482,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::DrawSprite(129, 590, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
 			Novice::DrawSprite(129, 440, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
 			Novice::DrawSprite(129, 290, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+			Novice::DrawSprite(129, 140, goalIcon, 0.7f, 0.7f, 0.0f, WHITE);
 
 			Novice::DrawBox(0, curtainY, 1920, 1080, 0.0f, GREEN, kFillModeSolid);
 
