@@ -8,7 +8,7 @@ public:
 	/// </summary>
 	void Initialize();
 	void GameoverInitialize();
-	void GoalInitialize();
+	/*void GoalInitialize();*/
 
 	/// <summary>
 	/// çXêV

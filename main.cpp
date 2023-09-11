@@ -143,7 +143,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (GameScene.scene == 0) {
 				//タイトルアニメーション
 				Titleanime->Update();
-				Titleanime->GoalInitialize();//Goal
+				Titleanime->GameoverInitialize();//Goal
 				//難易度：イージー
 				if (Novice::IsTriggerButton(0, kPadButton12)) {
 					for (int i = 0; i < Enemys; i++) {
