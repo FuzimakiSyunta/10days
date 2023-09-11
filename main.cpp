@@ -460,6 +460,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				if (GamePhase.phase == 0) {
 					enemy[0]->Draw(); // Enemy描画
 				}
+			    if (GamePhase.phase == 1) {
+				    Novice::DrawBox(300, 250, 300, 400, 0.0f, BLACK, kFillModeSolid);
+				    Novice::DrawBox(780, 250, 300, 400, 0.0f, BLACK, kFillModeSolid);
+				    Novice::DrawBox(1320, 250, 300, 400, 0.0f, BLACK, kFillModeSolid);
+				}
 				for (int i = 0; i < Players; i++) {
 					player[i]->Draw(); // Player描画
 				}
