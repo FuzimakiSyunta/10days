@@ -45,6 +45,7 @@ private:
 	int Gameoverimage[8] = { Novice::LoadTexture("./Resource./Gameover1.png"),Novice::LoadTexture("./Resource./Gameover2.png"),Novice::LoadTexture("./Resource./Gameover3.png"),Novice::LoadTexture("./Resource./Gameover4.png"),
 		Novice::LoadTexture("./Resource./Gameover5.png"),Novice::LoadTexture("./Resource./Gameover6.png"),Novice::LoadTexture("./Resource./Gameover7.png"),
 	Novice::LoadTexture("./Resource./Gameover8.png"), };
-	
+	//ÉSÅ[ÉãâÊëúì«Ç›çûÇ›
+	//int Goalimage[5] = { Novice::LoadTexture("./Resource./Gameover1.png"), Novice::LoadTexture("./Resource./Gameover1.png"), };
 };
 
