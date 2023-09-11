@@ -51,6 +51,19 @@ void TitleAction::GameoverUpdate()
 	GameoverFrame++;
 	
 }
+void TitleAction::GameoverUpdate()
+{
+	// ゲームオーバーアニメーション
+	if (GameoverFrame >= 10) {
+		GameoverAnimation++;
+		GameoverFrame = 0;
+	}
+	if (GameoverAnimation >= 8) {
+		GameoverAnimation = 7;
+	}
+	GameoverFrame++;
+
+}
 
 void TitleAction::Draw()
 {

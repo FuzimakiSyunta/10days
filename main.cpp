@@ -139,12 +139,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (GameScene.scene == 0) {
 				//タイトルアニメーション
 				Titleanime->Update();
+				Titleanime->GoalInitialize();//Goal
 				//難易度：イージー
 				if (Novice::IsTriggerButton(0, kPadButton12)) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
-						Titleanime->Initialize();
 						playerHP = 3;
 						enemyHP = 3;
 						degreeH = 0;
@@ -157,7 +157,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
-						Titleanime->Initialize();
 						playerHP = 3;
 						enemyHP = 3;
 						degreeH = 0;
