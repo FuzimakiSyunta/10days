@@ -13,6 +13,11 @@ void TitleAction::GameoverInitialize()
 	GameoverFrame = 0;
 	GameoverAnimation = 0;
 }
+void TitleAction::GoalInitialize()
+{
+	GoalFrame = 0;
+	GoalAnimation = 0;
+}
 
 
 void TitleAction::Update()
@@ -51,19 +56,19 @@ void TitleAction::GameoverUpdate()
 	GameoverFrame++;
 	
 }
-//void TitleAction::GoalUpdate()
-//{
-//	// ゲームオーバーアニメーション
-//	if (GameoverFrame >= 10) {
-//		GameoverAnimation++;
-//		GameoverFrame = 0;
-//	}
-//	if (GameoverAnimation >= 8) {
-//		GameoverAnimation = 7;
-//	}
-//	GameoverFrame++;
-//
-//}
+void TitleAction::GoalUpdate()
+{
+	// ゲームオーバーアニメーション
+	if (GoalFrame >= 20) {
+		GoalAnimation++;
+		GoalFrame = 0;
+	}
+	if (GoalAnimation >= 5) {
+		GoalAnimation = 4;
+	}
+	GoalFrame++;
+
+}
 
 void TitleAction::Draw()
 {
@@ -74,4 +79,9 @@ void TitleAction::Draw()
 void TitleAction::GameoverDraw()
 {
 	Novice::DrawSprite(0, 0, Gameoverimage[GameoverAnimation], 1, 1, 0.0f, WHITE);
+}
+
+void TitleAction::GoalDraw()
+{
+	Novice::DrawSprite(0, 0, Goalimage[GoalAnimation], 1, 1, 0.0f, WHITE);
 }

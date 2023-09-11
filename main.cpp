@@ -46,7 +46,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		player[i]->SetY(480.0f);
 		player[i]->SetW(1);
 		player[i]->SetH(1);
+		
 	}
+	
 
 	//delete player;
 
@@ -143,12 +145,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (GameScene.scene == 0) {
 				//タイトルアニメーション
 				Titleanime->Update();
-				Titleanime->GameoverInitialize();//Goal
+				Titleanime->GameoverInitialize();//Gameover初期化
+				Titleanime->GoalInitialize();//Goal初期化
+				for (int i = 0; i < Players; i++) {
+					player[i]->Initialize(); // Player初期化
+				}
 				//難易度：イージー
 				if (Novice::IsTriggerButton(0, kPadButton12)) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
-						player[i]->Initialize(); // Player初期化
 						playerHP = 3;
 						enemyHP = 3;
 						degreeH = 0;
@@ -411,12 +416,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 			case 2: // ゲームクリア
 				if (GameScene.scene == 2) {
-				    /*for (int i = 0; i < 5; i++) {
-					    player[i]->MoveUpdate();
-					    player[i]->SecondMoveUpdate();
-					    player[i]->ThirdMoveUpdate();
-					    player[i]->ThirdMoveUpdate();
-				    }*/
+					Titleanime->GoalUpdate();
+					for (int i = 0; i < 5; i++) {
+						player[i]->Update();
+					}
+				    
 					if (Novice::IsTriggerButton(0, kPadButton11)) {
 						GamePhase.phase = 0;
 						degreeH = 0;
@@ -489,10 +493,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		case 2:
 			if (GameScene.scene == 2) {
+				if (backGroundNum == 0) {
+					Novice::DrawSprite(0, 0, backGround1, 1, 1, 0.0f, WHITE);
+				}
+				else if (backGroundNum == 1) {
+					Novice::DrawSprite(0, 0, backGround2, 1, 1, 0.0f, WHITE);
+				}
+				Titleanime->GoalDraw();
 				Novice::ScreenPrintf(100, 100, "GAME CLEAR");
 				for (int i = 0; i < Players; i++) {
 					player[i]->Draw(); // Player描画
 				}
+				
 
 			}
 			
@@ -501,6 +513,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (GameScene.scene == 3) {
 				Titleanime->GameoverDraw();
 				Novice::ScreenPrintf(100, 100, "GAME OVER");
+				
 			}
 		}
 
