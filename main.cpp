@@ -109,6 +109,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Titleanime->ButtonFrame = 0;
 	Titleanime->GameoverAnimation = 0;
 	Titleanime->GameoverFrame = 0;
+	
 #pragma endregion
 
 	int playerHP = 3;//自機の体力
@@ -478,10 +479,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 2:
 			if (GameScene.scene == 2) {
 				Novice::ScreenPrintf(100, 100, "GAME CLEAR");
+				for (int i = 0; i < Players; i++) {
+					player[i]->Draw(); // Player描画
+				}
+
 			}
-			for (int i = 0; i < Players; i++) {
-				player[i]->Draw(); // Player描画
-			}
+			
 			break;
 		case 3:
 			if (GameScene.scene == 3) {
