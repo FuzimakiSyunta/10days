@@ -117,7 +117,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	
 #pragma endregion
 
-	int playerHP = 3;//自機の体力
+	int playerHP = 5;//自機の体力
 	int Hart = Novice::LoadTexture("./Resource./Hart.png");
 	int enemyHP = 3;//敵の体力
 
@@ -150,7 +150,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
-						playerHP = 3;
+						playerHP = 5;
 						enemyHP = 3;
 						degreeH = 0;
 						PlayerFormation = 0;
@@ -162,7 +162,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
-						playerHP = 3;
+						playerHP = 5;
 						enemyHP = 3;
 						degreeH = 0;
 						PlayerFormation = 0;
@@ -175,7 +175,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
-						playerHP = 3;
+						playerHP = 5;
 						enemyHP = 3;
 						degreeH = 0;
 						PlayerFormation = 0;
@@ -425,7 +425,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					if (Novice::IsTriggerButton(0, kPadButton11)) {
 						GamePhase.phase = 0;
 						degreeH = 0;
-					    playerHP = 3;
+					    playerHP = 5;
 						GameScene.scene = 0;
 					}
 				}
@@ -466,6 +466,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 				for (int i = 0; i < Players; i++) {
 					player[i]->Draw(); // Player描画
+				}
+				if (playerHP >= 5) {
+					Novice::DrawSprite(1600, 500, Hart, 1, 1, 0.0f, WHITE);//Heart描画
+				}
+				if (playerHP >= 4) {
+					Novice::DrawSprite(1600, 600, Hart, 1, 1, 0.0f, WHITE);//Heart描画
 				}
 				if (playerHP >= 3) {
 					Novice::DrawSprite(1600, 700, Hart, 1, 1, 0.0f, WHITE);//Heart描画
