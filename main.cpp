@@ -373,6 +373,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 										    playerHP -= 1;
 										    enemyHP -= 1;
 											enemy[0]->SharkAttack();
+											player[0]->Shake();
 									    }
 								    }
 								    if (enemy[0]->Getformation() == 2) { // 敵がへの字で上ボタン
@@ -382,6 +383,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 										    playerHP -= 1;
 										    enemyHP -= 1;
 											enemy[0]->SharkAttack();
+											player[0]->Shake();
 									    }
 								    }
 								    if (enemy[0]->Getformation() == 3) { // 敵がギザギザで右ボタン
@@ -391,13 +393,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 										    playerHP -= 1;
 										    enemyHP -= 1;
 											enemy[0]->SharkAttack();
+											player[0]->Shake();
 									    }
 								    }
 							    }
+								break;
+							}
 
 #pragma endregion
-							    break;
-						    }
+							  
 					    } else if (degreeH >= 750) {
 						    GameScene.scene = 2;
 					    }
