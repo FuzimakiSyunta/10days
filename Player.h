@@ -20,6 +20,8 @@ public:
 
 	void ThirdMoveUpdate();
 
+	void Shake();
+
 
 	/// <summary>
 	/// 描画
@@ -55,7 +57,9 @@ private:
 	    Novice::LoadTexture("./Resource./Ship.png"),
 	    Novice::LoadTexture("./Resource./Shipup.png"),
 	};
-
-
-	
+	//シェイク
+	int randX_;
+	int randY_;
+	int shakeTimer_;
+	int isShake_;
 };

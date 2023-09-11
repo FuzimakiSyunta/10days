@@ -17,6 +17,10 @@ void Player::Initialize() {
 	PosY_[3] = 700.0f;
 	PosX_[4] = 1270.0f;
 	PosY_[4] = 700.0f;
+	randX_ = 0;
+	randY_ = 0;
+	shakeTimer_ = 0;
+	isShake_ = false;
 }
 
 void Player::Update()
@@ -66,6 +70,22 @@ void Player::Update()
 		Anime[4] = 0;
 	}
 	Frame[4]++;
+
+	if (isShake_ == true) {
+		shakeTimer_ -= 1;
+		if (shakeTimer_ > 0) {
+			randX_ = rand() % 21 - 10;
+			randY_ = rand() % 21 - 10;
+		}
+		if (shakeTimer_ <= 0) {
+			isShake_ = false;
+		}
+	}
+	else
+	{
+		randX_ = 0;
+		randY_ = 0;
+	}
 }
 
 
@@ -126,13 +146,18 @@ void Player::ThirdMoveUpdate()//陣3
 	PosY_[3] = 720.0f;
 }
 
+void Player::Shake() {
+	isShake_ = true;
+	shakeTimer_ = 30;
+}
+
 void Player::Draw() 
 { 
-	Novice::DrawSprite(PosX_[0], PosY_[0], ShipUpanime_[Anime[0]], W_, H_, 0.0f, WHITE);
-	Novice::DrawSprite(PosX_[1], PosY_[1], ShipUpanime_[Anime[1]], W_, H_, 0.0f, WHITE);
-	Novice::DrawSprite(PosX_[2], PosY_[2], ShipUpanime_[Anime[2]], W_, H_, 0.0f, WHITE);
-	Novice::DrawSprite(PosX_[3], PosY_[3], ShipUpanime_[Anime[3]], W_, H_, 0.0f, WHITE);
-	Novice::DrawSprite(PosX_[4], PosY_[4], ShipUpanime_[Anime[4]], W_, H_, 0.0f, WHITE);
+	Novice::DrawSprite(PosX_[0] + randX_, PosY_[0] + randY_, ShipUpanime_[Anime[0]], W_, H_, 0.0f, WHITE);
+	Novice::DrawSprite(PosX_[1] + randX_, PosY_[1] + randY_, ShipUpanime_[Anime[1]], W_, H_, 0.0f, WHITE);
+	Novice::DrawSprite(PosX_[2] + randX_, PosY_[2] + randY_, ShipUpanime_[Anime[2]], W_, H_, 0.0f, WHITE);
+	Novice::DrawSprite(PosX_[3] + randX_, PosY_[3] + randY_, ShipUpanime_[Anime[3]], W_, H_, 0.0f, WHITE);
+	Novice::DrawSprite(PosX_[4] + randX_, PosY_[4] + randY_, ShipUpanime_[Anime[4]], W_, H_, 0.0f, WHITE);
 }
 
 
