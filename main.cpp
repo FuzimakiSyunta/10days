@@ -26,6 +26,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int curtainUp = false;
 	int curtainFlame = 0;
 	int curtainY = -1080;
+	int curtainimage= Novice::LoadTexture("./Resource/curtain.png");
 
 	//敵のフェーズの番号
 	int enemyPhaseNum = 0;
@@ -457,7 +458,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			switch (GameScene.scene) {
 			case 0: // タイトル
 				Titleanime->Draw();//タイトルアニメーション
-				Novice::DrawBox(0, curtainY, 1920, 1080, 0.0f, GREEN, kFillModeSolid);
+				Novice::DrawSprite(0, curtainY, curtainimage, 1, 1, 0.0f, WHITE);
 				break;
 			case 1:
 				
@@ -504,7 +505,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::DrawSprite(129, 290, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
 			Novice::DrawSprite(129, 140, goalIcon, 0.7f, 0.7f, 0.0f, WHITE);
 
-			Novice::DrawBox(0, curtainY, 1920, 1080, 0.0f, GREEN, kFillModeSolid);
+			Novice::DrawSprite(0, curtainY, curtainimage, 1, 1, 0.0f, WHITE);
 
 			
 
