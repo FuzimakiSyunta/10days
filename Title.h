@@ -8,7 +8,7 @@ public:
 	/// </summary>
 	void Initialize();
 	void GameoverInitialize();
-	/*void GoalInitialize();*/
+	void GoalInitialize();
 
 	/// <summary>
 	/// 更新
@@ -17,6 +17,8 @@ public:
 
 	void GameoverUpdate();
 
+	void GoalUpdate();
+
 
 	/// <summary>
 	/// 描画
@@ -24,6 +26,8 @@ public:
 	void Draw();
 
 	void GameoverDraw();
+
+	void GoalDraw();
 
 	//タイトルのアニメーション
 	int TitleFrame;
