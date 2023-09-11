@@ -33,6 +33,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//難易度
 	int level = 0;
 
+	//リソース用の変数
+	int itemIcon = Novice::LoadTexture("./Resource/Checkpoint.png");
+	int enemyIcon = Novice::LoadTexture("./Resource/Checkpoint2.png");
+
 #pragma region 自機の変数
 	const int Players = 5;
 	Player* player[Players] = {new Player, new Player, new Player, new Player, new Player};
@@ -458,10 +462,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 
 			///進行度バーの描画
-			Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, RED, kFillModeSolid);
+			Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, GREEN, kFillModeSolid);
 			Novice::DrawBox(100, 165, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
 
+			Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+			Novice::DrawSprite(129, 740, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
+			Novice::DrawSprite(129, 590, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+			Novice::DrawSprite(129, 440, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+			Novice::DrawSprite(129, 290, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+
 			Novice::DrawBox(0, curtainY, 1920, 1080, 0.0f, GREEN, kFillModeSolid);
+
+			
 
 			break;
 		case 2:
@@ -481,7 +493,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma region デバックコード
 
-			Novice::DrawBox(0, 0, 300, 300, 0.0f, BLACK, kFillModeSolid);
+			Novice::DrawBox(0, 0, 300, 200, 0.0f, BLACK, kFillModeSolid);
 			Novice::ScreenPrintf(0, 20, "%d,%d", player[0]->GetX(), player[0]->GetY());
 			Novice::ScreenPrintf(0, 100, "%d,%d", player[1]->GetX(), player[1]->GetY());
 			Novice::ScreenPrintf(0, 120, "%d,%d", player[2]->GetX(), player[2]->GetY());
