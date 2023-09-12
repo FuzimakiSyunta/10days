@@ -325,7 +325,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							    }
 							    if (GamePhase.phase == 1) {
 								    ////////////////アイテムを選択するフェーズの処理////////////////////
-
+								    sound.itemsoundFrag = true;
 								    if (Novice::IsTriggerButton(0, kPadButton12) &&
 								        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
 								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
@@ -676,6 +676,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				if (sound.BommFrag == true) {
 				    Novice::PlayAudio(Bomm, false, 1.5f);
 				    sound.BommFrag = false;
+			    }
+			    if (sound.itemsoundFrag == true) {
+				    Novice::PlayAudio(itemsound, false, 1.5f);
+				    sound.itemsoundFrag = false;
 			    }
 
 				if (backGroundNum == 0) {
