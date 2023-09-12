@@ -14,6 +14,7 @@ public:
 	/// XV
 	/// </summary>
 	void Update();
+	void HardUpdate();
 	void SharkAttack();
 	void ExplosionFlag();
 

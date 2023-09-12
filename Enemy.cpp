@@ -122,6 +122,99 @@ void Enemy::Update() {
 	}
 }
 
+void Enemy::HardUpdate() {
+	for (int i = 0; i < 5; i++) {
+		if (PosY_[i] < 300) {
+			PosY_[i] += Speed_;
+		}
+	}
+	if (PosY_[0] >= 300) {
+		Start_ = true;
+	}
+	if (Start_ == true) {
+		frame_ += 1;
+	}
+	if (frame_ == 10) {
+		Attack_ = false;
+	}
+	if (frame_ >= 60) {
+		timer_ += 1;
+		frame_ = 0;
+	}
+	if (timer_ >= 1) {
+		timer_ = 0;
+		Speed_ = 0;
+		TimePosW_ = 1080;
+		formation_ = rand() % 3 + 1;
+		if (formation_ == 1 && formation1_ == true) {
+			for (int i{}; formation_ == 1; i++) {
+				formation_ = rand() % 3 + 1;
+			}
+		}
+		if (formation_ == 2 && formation2_ == true) {
+			for (int i{}; formation_ == 2; i++) {
+				formation_ = rand() % 3 + 1;
+			}
+		}
+		if (formation_ == 3 && formation3_ == true) {
+			for (int i{}; formation_ == 3; i++) {
+				formation_ = rand() % 3 + 1;
+			}
+		}
+	}
+	if (formation_ == 1) {
+		TimePosW_ -= 18;
+		if (formation1_ == false) { //逆への字
+			PosY_[0] = 300.0f;//真ん中
+			PosY_[1] = 200.0f;//右
+			PosY_[2] = 200.0f;//左
+			PosY_[3] = 100.0f;//右端
+			PosY_[4] = 100.0f;//左端
+			formation1_ = true;
+			formation2_ = false;
+			formation3_ = false;
+		}
+	}
+	if (formation_ == 2) {
+		TimePosW_ -= 18;
+		if (formation2_ == false) { //への字
+			PosY_[0] = 100.0f;//真ん中
+			PosY_[1] = 200.0f;//右
+			PosY_[2] = 200.0f;//左
+			PosY_[3] = 300.0f;//右端
+			PosY_[4] = 300.0f;//左端
+			formation1_ = false;
+			formation2_ = true;
+			formation3_ = false;
+		}
+	}
+	if (formation_ == 3) {
+		TimePosW_ -= 18;
+		if (formation3_ == false) {//ギザギザ
+			PosY_[0] = 200.0f;//真ん中
+			PosY_[1] = 100.0f;//右
+			PosY_[2] = 100.0f;//左
+			PosY_[3] = 300.0f;//右端
+			PosY_[4] = 300.0f;//左端
+			formation1_ = false;
+			formation2_ = false;
+			formation3_ = true;
+		}
+	}
+	if (ExplosionFlag_ == true) {
+		ExplosionFrame++;
+		if (ExplosionFrame >= 5) {
+			ExplosionAnimation++;
+			ExplosionFrame = 0;
+		}
+		if (ExplosionAnimation >= 6) {
+			ExplosionAnimation = 0;
+			ExplosionFrame = 0;
+			ExplosionFlag_ = false;
+		}
+	}
+}
+
 void Enemy::ExplosionFlag() {
 	ExplosionFlag_ = true;
 }
