@@ -305,7 +305,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							    // 敵戦闘とアイテム選択シーンの切り替え
 							    if (GamePhase.phase == 0) {
 								    /// 敵と3回戦ったらアイテム選択フェーズに移動する////
-
 								    if (enemyHP <= 0) {
 									    degreeH += 250;
 									    if (degreeH <= 300) {
@@ -324,13 +323,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								    ////////////////////////////////////////////////////////////////////
 							    }
 							    if (GamePhase.phase == 1) {
-								    ////////////////アイテムを選択するフェーズの処理////////////////////
-								    sound.itemsoundFrag = true;
+								    ////////////////アイテムを選択するフェーズの処理///////////////////
 								    if (Novice::IsTriggerButton(0, kPadButton12) &&
 								        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
 								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 									    /// 自機のHPが1回復する処理
 									    if (playerHP < 5) {
+										    sound.itemsoundFrag = true;
 										    playerHP += 1;
 									    }
 									    degreeH += 250;
@@ -341,7 +340,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
 								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 									    // 次の敵の勝負回数が2回になる処理
-
+									    sound.itemsoundFrag = true;
 									    degreeH += 250;
 									    enemyHP = 2;
 									    GamePhase.phase = 0;
@@ -364,7 +363,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							    // 敵戦闘とアイテム選択シーンの切り替え
 							    if (GamePhase.phase == 0) {
 								    /// 敵と3回戦ったらアイテム選択フェーズに移動する////
-
 								    if (enemyHP <= 0) {
 									    degreeH += 150;
 									    if (degreeH <= 300) {
@@ -384,16 +382,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						    }
 						    if (GamePhase.phase == 1) {
 							    ////////////////アイテムを選択するフェーズの処理////////////////////
-							    if (sound.itemsoundFrag == true) {
-								    Novice::PlayAudio(itemsound, false, 1.0f);
-								    sound.itemsoundFrag = false;
-							    }
 
 								    if (Novice::IsTriggerButton(0, kPadButton12) &&
 								        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
 								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 									    /// 自機のHPが1回復する処理
 									    if (playerHP < 5) {
+										    sound.itemsoundFrag = true;
 										    playerHP += 1;
 									    }
 									    degreeH += 150;
@@ -404,7 +399,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
 								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 									    // 次の敵の勝負回数が2回になる処理
-
+									    sound.itemsoundFrag = true;
 									    degreeH += 150;
 									    enemyHP = 2;
 									    GamePhase.phase = 0;
@@ -452,6 +447,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 									    /// 自機のHPが1回復する処理
 									    if (playerHP < 5) {
+										    sound.itemsoundFrag = true;
 										    playerHP += 1;
 									    }
 									    degreeH += 125;
@@ -462,7 +458,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
 								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
 									    // 次の敵の勝負回数が2回になる処理
-
+									    sound.itemsoundFrag = true;
 									    degreeH += 125;
 									    enemyHP = 2;
 									    GamePhase.phase = 0;
