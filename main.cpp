@@ -687,7 +687,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					Novice::DrawSprite(0, 0, backGround2, 1, 1, 0.0f, WHITE);
 				}
 				Titleanime->GoalDraw();
-				Novice::ScreenPrintf(100, 100, "GAME CLEAR");
+				//Novice::ScreenPrintf(100, 100, "GAME CLEAR");
 				for (int i = 0; i < Players; i++) {
 					player[i]->Draw(); // Player描画
 				}
@@ -699,7 +699,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case 3:
 			if (GameScene.scene == 3) {
 				Titleanime->GameoverDraw();
-				Novice::ScreenPrintf(100, 100, "GAME OVER");
+				//Novice::ScreenPrintf(100, 100, "GAME OVER");
 				
 			}
 		}
