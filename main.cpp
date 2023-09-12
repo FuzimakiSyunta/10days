@@ -162,6 +162,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						enemyHP = 3;
 						degreeH = 0;
 						PlayerFormation = 0;
+						level = 1;
 					}
 					curtainDown = true;
 				}
@@ -174,6 +175,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						enemyHP = 3;
 						degreeH = 0;
 						PlayerFormation = 0;
+						level = 2;
 					}
 					curtainDown = true;
 						break;
@@ -187,6 +189,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						enemyHP = 3;
 						degreeH = 0;
 						PlayerFormation = 0;
+						level = 3;
 					}
 					curtainDown = true;
 				}
@@ -271,62 +274,183 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					}
 				    if (playerHP > 0) {
 					    if (degreeH < 750) {
-						    // 敵戦闘とアイテム選択シーンの切り替え
-						    if (GamePhase.phase == 0) {
-							    /// 敵と3回戦ったらアイテム選択フェーズに移動する////
+							/////難易度イージー
+						    if (level == 1) {
+							    // 敵戦闘とアイテム選択シーンの切り替え
+							    if (GamePhase.phase == 0) {
+								    /// 敵と3回戦ったらアイテム選択フェーズに移動する////
 
-							    if (enemyHP <= 0) {
-								    degreeH += 150;
-								    if (degreeH <= 300) {
-									    for (int i = 0; i < Enemys; i++) {
-											enemy[i]->Initialize();
+								    if (enemyHP <= 0) {
+									    degreeH += 250;
+									    if (degreeH <= 300) {
+										    for (int i = 0; i < Enemys; i++) {
+											    enemy[i]->Initialize();
+										    }
+										    GamePhase.phase = 1;
+									    } else if (500 <= degreeH < 750) {
+										    for (int i = 0; i < Enemys; i++) {
+											    enemy[i]->Initialize();
+										    }
+										    enemyHP = 3;
 									    }
-									    GamePhase.phase = 1;
-								    } else if (300 < degreeH < 750) {
-									    for (int i = 0; i < Enemys; i++) {
-											enemy[i]->Initialize();
+								    }
+
+								    ////////////////////////////////////////////////////////////////////
+							    }
+							    if (GamePhase.phase == 1) {
+								    ////////////////アイテムを選択するフェーズの処理////////////////////
+
+								    if (Novice::IsTriggerButton(0, kPadButton12) &&
+								        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
+									    /// 自機のHPが1回復する処理
+									    if (playerHP < 5) {
+										    playerHP += 1;
 									    }
+									    degreeH += 250;
 									    enemyHP = 3;
+									    GamePhase.phase = 0;
 								    }
-							    }
+								    if (Novice::IsTriggerButton(0, kPadButton13) &&
+								        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
+								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
+									    // 次の敵の勝負回数が2回になる処理
 
-							    ////////////////////////////////////////////////////////////////////
-						    }
-						    if (GamePhase.phase == 1) {
-							    ////////////////アイテムを選択するフェーズの処理////////////////////
-
-							    if (Novice::IsTriggerButton(0, kPadButton12) &&
-							        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
-							        Novice::IsTriggerButton(0, kPadButton11) == 0) {
-								    /// 自機のHPが1回復する処理
-								    if (playerHP < 5) {
-									    playerHP += 1;
+									    degreeH += 250;
+									    enemyHP = 2;
+									    GamePhase.phase = 0;
 								    }
-								    degreeH += 150;
-								    enemyHP = 3;
-								    GamePhase.phase = 0;
-							    }
-							    if (Novice::IsTriggerButton(0, kPadButton13) &&
-							        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
-							        Novice::IsTriggerButton(0, kPadButton11) == 0) {
-								    // 次の敵の勝負回数が2回になる処理
+								    if (Novice::IsTriggerButton(0, kPadButton11) &&
+								        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+								        Novice::IsTriggerButton(0, kPadButton12) == 0) {
+									    // 目隠しを消す処理
 
-								    degreeH += 150;
-								    enemyHP = 2;
-								    GamePhase.phase = 0;
-							    }
-							    if (Novice::IsTriggerButton(0, kPadButton11) &&
-							        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
-							        Novice::IsTriggerButton(0, kPadButton12) == 0) {
-								    // 目隠しを消す処理
+									    degreeH += 250;
+									    enemyHP = 3;
+									    GamePhase.phase = 0;
+								    }
 
-								    degreeH += 150;
-								    enemyHP = 3;
-								    GamePhase.phase = 0;
+								    ////////////////////////////////////////////////////////////////////
 							    }
+							} 
+							/////難易度ノーマル
+						    if (level == 2) {
+							    // 敵戦闘とアイテム選択シーンの切り替え
+							    if (GamePhase.phase == 0) {
+								    /// 敵と3回戦ったらアイテム選択フェーズに移動する////
 
-							    ////////////////////////////////////////////////////////////////////
-						    }
+								    if (enemyHP <= 0) {
+									    degreeH += 150;
+									    if (degreeH <= 300) {
+										    for (int i = 0; i < Enemys; i++) {
+											    enemy[i]->Initialize();
+										    }
+										    GamePhase.phase = 1;
+									    } else if (300 < degreeH < 750) {
+										    for (int i = 0; i < Enemys; i++) {
+											    enemy[i]->Initialize();
+										    }
+										    enemyHP = 3;
+									    }
+								    }
+
+								    ////////////////////////////////////////////////////////////////////
+							    }
+							    if (GamePhase.phase == 1) {
+								    ////////////////アイテムを選択するフェーズの処理////////////////////
+
+								    if (Novice::IsTriggerButton(0, kPadButton12) &&
+								        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
+									    /// 自機のHPが1回復する処理
+									    if (playerHP < 5) {
+										    playerHP += 1;
+									    }
+									    degreeH += 150;
+									    enemyHP = 3;
+									    GamePhase.phase = 0;
+								    }
+								    if (Novice::IsTriggerButton(0, kPadButton13) &&
+								        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
+								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
+									    // 次の敵の勝負回数が2回になる処理
+
+									    degreeH += 150;
+									    enemyHP = 2;
+									    GamePhase.phase = 0;
+								    }
+								    if (Novice::IsTriggerButton(0, kPadButton11) &&
+								        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+								        Novice::IsTriggerButton(0, kPadButton12) == 0) {
+									    // 目隠しを消す処理
+
+									    degreeH += 150;
+									    enemyHP = 3;
+									    GamePhase.phase = 0;
+								    }
+
+								    ////////////////////////////////////////////////////////////////////
+							    }
+							}
+						    if (level == 3) {
+							    // 敵戦闘とアイテム選択シーンの切り替え
+							    if (GamePhase.phase == 0) {
+								    /// 敵と3回戦ったらアイテム選択フェーズに移動する////
+
+								    if (enemyHP <= 0) {
+									    degreeH += 125;
+									    if (degreeH <= 500) {
+										    for (int i = 0; i < Enemys; i++) {
+											    enemy[i]->Initialize();
+										    }
+										    GamePhase.phase = 1;
+									    } else if (500 <= degreeH < 750) {
+										    for (int i = 0; i < Enemys; i++) {
+											    enemy[i]->Initialize();
+										    }
+										    enemyHP = 3;
+									    }
+								    }
+
+								    ////////////////////////////////////////////////////////////////////
+							    }
+							    if (GamePhase.phase == 1) {
+								    ////////////////アイテムを選択するフェーズの処理////////////////////
+
+								    if (Novice::IsTriggerButton(0, kPadButton12) &&
+								        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
+									    /// 自機のHPが1回復する処理
+									    if (playerHP < 5) {
+										    playerHP += 1;
+									    }
+									    degreeH += 125;
+									    enemyHP = 3;
+									    GamePhase.phase = 0;
+								    }
+								    if (Novice::IsTriggerButton(0, kPadButton13) &&
+								        Novice::IsTriggerButton(0, kPadButton12) == 0 &&
+								        Novice::IsTriggerButton(0, kPadButton11) == 0) {
+									    // 次の敵の勝負回数が2回になる処理
+
+									    degreeH += 125;
+									    enemyHP = 2;
+									    GamePhase.phase = 0;
+								    }
+								    if (Novice::IsTriggerButton(0, kPadButton11) &&
+								        Novice::IsTriggerButton(0, kPadButton13) == 0 &&
+								        Novice::IsTriggerButton(0, kPadButton12) == 0) {
+									    // 目隠しを消す処理
+
+									    degreeH += 125;
+									    enemyHP = 3;
+									    GamePhase.phase = 0;
+								    }
+
+								    ////////////////////////////////////////////////////////////////////
+							    }
+							}
+						   
 							    for (int i = 0; i < 5; i++) {
 								    player[i]->Update();
 							    }
@@ -368,11 +492,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma endregion
 
 #pragma region 敵の更新
-						    if (GamePhase.phase == 0) {
-							    for (int i = 0; i < Enemys; i++) {
-								    enemy[i]->Update();
+						    if (level == 1 || level == 2) {
+							    if (GamePhase.phase == 0) {
+								    for (int i = 0; i < Enemys; i++) {
+									    enemy[i]->Update();
+								    }
 							    }
-						    }
+						    } else if (level == 3) {
+								
+							}
 #pragma endregion
 
 #pragma region 勝負
@@ -442,6 +570,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						GamePhase.phase = 0;
 						degreeH = 0;
 					    playerHP = 5;
+					    level = 0;
 						GameScene.scene = 0;
 					}
 				}
@@ -451,7 +580,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				    if (Novice::IsTriggerButton(0, kPadButton11)) {
 					    GamePhase.phase = 0;
 					    degreeH = 0;
-						
+					    level = 0;
 					    GameScene.scene = 0;
 				    }
 				}
@@ -508,12 +637,31 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, GREEN, kFillModeSolid);
 			Novice::DrawBox(100, 165, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
 
-			Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
-			Novice::DrawSprite(129, 740, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
-			Novice::DrawSprite(129, 590, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
-			Novice::DrawSprite(129, 440, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
-			Novice::DrawSprite(129, 290, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
-			Novice::DrawSprite(129, 140, goalIcon, 0.7f, 0.7f, 0.0f, WHITE);
+			if (level == 1) {
+				    Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 640, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 390, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 140, goalIcon, 0.7f, 0.7f, 0.0f, WHITE);
+			}
+
+			if (level == 2) {
+				    Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 740, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 590, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 440, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 290, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 140, goalIcon, 0.7f, 0.7f, 0.0f, WHITE);
+			}
+			if (level == 3) {
+				    Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 765, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 640, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 515, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 390, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 265, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 140, goalIcon, 0.7f, 0.7f, 0.0f, WHITE);
+			}
+			
 
 			Novice::DrawSprite(0, curtainY, curtainimage, 1, 1, 0.0f, WHITE);
 
@@ -548,13 +696,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 #pragma region デバックコード
 
-			Novice::DrawBox(0, 0, 300, 200, 0.0f, BLACK, kFillModeSolid);
+			/*Novice::DrawBox(0, 0, 300, 200, 0.0f, BLACK, kFillModeSolid);
 			Novice::ScreenPrintf(0, 20, "%d,%d", player[0]->GetX(), player[0]->GetY());
 			Novice::ScreenPrintf(0, 100, "%d,%d", player[1]->GetX(), player[1]->GetY());
 			Novice::ScreenPrintf(0, 120, "%d,%d", player[2]->GetX(), player[2]->GetY());
 			Novice::ScreenPrintf(0, 140, "PlayerHP%d,PlayerFormation%d",playerHP,PlayerFormation);
 			Novice::ScreenPrintf(0, 160, "EnemyHP%d,EnemyFormation%d", enemyHP,enemy[0]->Getformation());
-			Novice::ScreenPrintf(0, 40, "%d,%d", GameScene.scene);
+			Novice::ScreenPrintf(0, 40, "%d,%d", GameScene.scene);*/
 #pragma endregion
 
 			///
