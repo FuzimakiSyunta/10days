@@ -40,6 +40,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int goalIcon = Novice::LoadTexture("./Resource/GoalFrag.png");
 	int itemIconX = Novice::LoadTexture("./Resource/ItemX.png");
 	int itemIconY = Novice::LoadTexture("./Resource/ItemY.png");
+	int key = Novice::LoadTexture("./Resource/Key.png");
+	int Moji = Novice::LoadTexture("./Resource/Moji.png");
 
 	//sound
 	int itemsound = Novice::LoadAudio("./Sound/item.wav");
@@ -712,30 +714,33 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			///進行度バーの描画
 			Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, GREEN, kFillModeSolid);
 			Novice::DrawBox(100, 165, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
+			//操作方法の描画
+			Novice::DrawSprite(1550, 0, Moji, 0.6f, 0.6f, 0.0f, WHITE);
+			Novice::DrawSprite(1625, 200, key, 0.3f, 0.3f, 0.0f, WHITE);
 
 			if (level == 1) {
-				    Novice::DrawSprite(118, 880, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 630, itemIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 380, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 130, goalIcon, 1.0f, 1.0f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 640, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 390, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 140, goalIcon, 0.7f, 0.7f, 0.0f, WHITE);
 			}
 
 			if (level == 2) {
-				    Novice::DrawSprite(118, 880, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 730, itemIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 580, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 430, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 280, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 130, goalIcon, 1.0f, 1.0f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 740, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 590, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 440, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 290, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 140, goalIcon, 0.7f, 0.7f, 0.0f, WHITE);
 			}
 			if (level == 3) {
-				    Novice::DrawSprite(118, 880, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 755, itemIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 630, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 505, itemIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 380, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 255, enemyIcon, 1.0f, 1.0f, 0.0f, WHITE);
-				    Novice::DrawSprite(118, 130, goalIcon, 1.0f, 1.0f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 765, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 640, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 515, itemIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 390, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 265, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
+				    Novice::DrawSprite(129, 140, goalIcon, 0.7f, 0.7f, 0.0f, WHITE);
 			}
 			
 
