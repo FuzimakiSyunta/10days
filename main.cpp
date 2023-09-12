@@ -287,11 +287,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								    if (degreeH <= 300) {
 									    for (int i = 0; i < Enemys; i++) {
 											enemy[i]->Initialize();
+											player[i]->Initialize();
+											PlayerFormation = 0;
 									    }
 									    GamePhase.phase = 1;
 								    } else if (300 < degreeH < 750) {
 									    for (int i = 0; i < Enemys; i++) {
 											enemy[i]->Initialize();
+											player[i]->Initialize();
+											PlayerFormation = 0;
 									    }
 									    enemyHP = 3;
 								    }
@@ -375,7 +379,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 #pragma endregion
 
 #pragma region 敵の更新
-						    if (GamePhase.phase == 0) {
+						    if (GamePhase.phase == 0 && curtainY <= -1080) {
 							    for (int i = 0; i < Enemys; i++) {
 								    enemy[i]->Update();
 							    }
