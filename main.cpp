@@ -178,49 +178,52 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					player[i]->Initialize(); // Player初期化
 					enemy[0]->ExplosionInitialize();
 				}
-				//難易度：イージー
-				if (Novice::IsTriggerButton(0, kPadButton12)) {
-					sound.ButtonFrag = true;
-					for (int i = 0; i < Enemys; i++) {
-						enemy[i]->Initialize();
-						player[i]->Initialize(); // Player初期化
-						playerHP = 5;
-						enemyHP = 3;
-						degreeH = 0;
-						PlayerFormation = 0;
-						level = 1;
+				if (curtainY <= -1079) {
+					// 難易度：イージー
+					if (Novice::IsTriggerButton(0, kPadButton12)) {
+						sound.ButtonFrag = true;
+						for (int i = 0; i < Enemys; i++) {
+							enemy[i]->Initialize();
+							player[i]->Initialize(); // Player初期化
+							playerHP = 5;
+							enemyHP = 3;
+							degreeH = 0;
+							PlayerFormation = 0;
+							level = 1;
+						}
+						curtainDown = true;
 					}
-					curtainDown = true;
-				}
-				//難易度：ノーマル
-				if (Novice::IsTriggerButton(0, kPadButton13)) {
-					sound.ButtonFrag = true;
-					for (int i = 0; i < Enemys; i++) {
-						enemy[i]->Initialize();
-						player[i]->Initialize(); // Player初期化
-						playerHP = 5;
-						enemyHP = 3;
-						degreeH = 0;
-						PlayerFormation = 0;
-						level = 2;
-					}
-					curtainDown = true;
+					// 難易度：ノーマル
+					if (Novice::IsTriggerButton(0, kPadButton13)) {
+						sound.ButtonFrag = true;
+						for (int i = 0; i < Enemys; i++) {
+							enemy[i]->Initialize();
+							player[i]->Initialize(); // Player初期化
+							playerHP = 5;
+							enemyHP = 3;
+							degreeH = 0;
+							PlayerFormation = 0;
+							level = 2;
+						}
+						curtainDown = true;
 						break;
-				}
-				//難易度：ハード
-				if (Novice::IsTriggerButton(0, kPadButton11)) {
-					    sound.ButtonFrag = true;
-					for (int i = 0; i < Enemys; i++) {
-						enemy[i]->Initialize();
-						player[i]->Initialize(); // Player初期化
-						playerHP = 5;
-						enemyHP = 3;
-						degreeH = 0;
-						PlayerFormation = 0;
-						level = 3;
 					}
-					curtainDown = true;
+					// 難易度：ハード
+					if (Novice::IsTriggerButton(0, kPadButton11)) {
+						sound.ButtonFrag = true;
+						for (int i = 0; i < Enemys; i++) {
+							enemy[i]->Initialize();
+							player[i]->Initialize(); // Player初期化
+							playerHP = 5;
+							enemyHP = 3;
+							degreeH = 0;
+							PlayerFormation = 0;
+							level = 3;
+						}
+						curtainDown = true;
+					}
 				}
+				
 			}
 			if (curtainDown == true) {
 				    curtainY += 5;
