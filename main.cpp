@@ -43,6 +43,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int key = Novice::LoadTexture("./Resource/Key.png");
 	int Moji = Novice::LoadTexture("./Resource/Moji.png");
 	int Aisyou = Novice::LoadTexture("./Resource/aisyou.png");
+	int AisyouTitle = Novice::LoadTexture("./Resource/aisyouTitle.png");
 
 	//sound
 	int itemsound = Novice::LoadAudio("./Sound/item.wav");
@@ -667,7 +668,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				    Novice::PlayAudio(Button, false, 1.5f);
 				    sound.ButtonFrag = false;
 			    }
-			    
+			    Novice::DrawSprite(0, 0, AisyouTitle, 1, 1, 0.0f, WHITE);
 				Novice::DrawSprite(0, curtainY, curtainimage, 1, 1, 0.0f, WHITE);
 				break;
 			case 1:
