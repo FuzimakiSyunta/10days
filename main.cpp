@@ -42,6 +42,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int itemIconY = Novice::LoadTexture("./Resource/ItemY.png");
 	int key = Novice::LoadTexture("./Resource/Key.png");
 	int Moji = Novice::LoadTexture("./Resource/Moji.png");
+	int Aisyou = Novice::LoadTexture("./Resource/aisyou.png");
 
 	//sound
 	int itemsound = Novice::LoadAudio("./Sound/item.wav");
@@ -717,6 +718,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			//操作方法の描画
 			Novice::DrawSprite(1550, 0, Moji, 0.6f, 0.6f, 0.0f, WHITE);
 			Novice::DrawSprite(1625, 200, key, 0.3f, 0.3f, 0.0f, WHITE);
+			//相性表
+			Novice::DrawSprite(0, 0, Aisyou, 1.0f, 1.0f, 0.0f, WHITE);
 
 			if (level == 1) {
 				    Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
