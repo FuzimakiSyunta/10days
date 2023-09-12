@@ -40,6 +40,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int goalIcon = Novice::LoadTexture("./Resource/GoalFrag.png");
 	int itemIconX = Novice::LoadTexture("./Resource/ItemX.png");
 	int itemIconY = Novice::LoadTexture("./Resource/ItemY.png");
+	int key = Novice::LoadTexture("./Resource/Key.png");
+	int Moji = Novice::LoadTexture("./Resource/Moji.png");
 
 	//sound
 	int itemsound = Novice::LoadAudio("./Sound/item.wav");
@@ -716,6 +718,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			///進行度バーの描画
 			Novice::DrawBox(100, 915 - degreeH, degreeW, degreeH, 0.0f, GREEN, kFillModeSolid);
 			Novice::DrawBox(100, 165, degreeFrameW, degreeFlameH, 0.0f, BLACK, kFillModeWireFrame);
+			//操作方法の描画
+			Novice::DrawSprite(1550, 0, Moji, 0.6f, 0.6f, 0.0f, WHITE);
+			Novice::DrawSprite(1625, 200, key, 0.3f, 0.3f, 0.0f, WHITE);
 
 			if (level == 1) {
 				    Novice::DrawSprite(129, 890, enemyIcon, 0.7f, 0.7f, 0.0f, WHITE);
