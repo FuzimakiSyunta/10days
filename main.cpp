@@ -38,6 +38,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int itemIcon = Novice::LoadTexture("./Resource/Checkpoint.png");
 	int enemyIcon = Novice::LoadTexture("./Resource/Checkpoint2.png");
 	int goalIcon = Novice::LoadTexture("./Resource/GoalFrag.png");
+	int itemIconX = Novice::LoadTexture("./Resource/ItemX.png");
+	int itemIconY = Novice::LoadTexture("./Resource/ItemY.png");
 
 	//sound
 	int itemsound = Novice::LoadAudio("./Sound/item.wav");
@@ -506,7 +508,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								    }
 							    }
 						    } else if (level == 3) {
-								
+							    for (int i = 0; i < Enemys; i++) {
+								    enemy[i]->HardUpdate();
+							    }
 							}
 #pragma endregion
 
@@ -617,9 +621,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					enemy[0]->Draw(); // Enemy描画
 				}
 			    if (GamePhase.phase == 1) {
-				    Novice::DrawBox(300, 250, 300, 400, 0.0f, BLACK, kFillModeSolid);
-				    Novice::DrawBox(780, 250, 300, 400, 0.0f, BLACK, kFillModeSolid);
-				    Novice::DrawBox(1320, 250, 300, 400, 0.0f, BLACK, kFillModeSolid);
+				    Novice::DrawSprite(510, 250, itemIconX, 1, 1, 0.0f, WHITE);
+				    Novice::DrawSprite(1210, 250, itemIconY, 1, 1, 0.0f, WHITE);
 				}
 				for (int i = 0; i < Players; i++) {
 					player[i]->Draw(); // Player描画
