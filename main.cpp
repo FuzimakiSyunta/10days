@@ -39,6 +39,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int enemyIcon = Novice::LoadTexture("./Resource/Checkpoint2.png");
 	int goalIcon = Novice::LoadTexture("./Resource/GoalFrag.png");
 
+	//sound
+	int itemsound = Novice::LoadAudio("./Sound/item.wav");
+	int Play = Novice::LoadAudio("./Sound/Play.wav");
+	int Formation = Novice::LoadAudio("./Sound/Zin.wav");
+	int Bomm = Novice::LoadAudio("./Sound/Bomm.wav");
+
+
 #pragma region 自機の変数
 	const int Players = 5;
 	Player* player[Players] = {new Player, new Player, new Player, new Player, new Player};
@@ -129,7 +136,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
 	char preKeys[256] = {0};
-
+	Novice::PlayAudio(Play, true, 0.8f);
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
 		// フレームの開始
