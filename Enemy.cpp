@@ -291,9 +291,9 @@ void Enemy::Draw(){
 	}
 
 
-	Novice::ScreenPrintf(0, 60, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_[0], PosY_[0], Speed_);
-	Novice::ScreenPrintf(0, 80, "frame%d,timer%d,Damage%d", frame_, timer_);
-	Novice::ScreenPrintf(0, 180, "ExplosionFlag_%d,ExplosionFrame%d,ExplosionAnimation%d", ExplosionFlag_, ExplosionFrame, ExplosionAnimation);
+	//Novice::ScreenPrintf(0, 60, "EnemyX%d,EnemyY%d,EnemySpeed%d", PosX_[0], PosY_[0], Speed_);
+	//Novice::ScreenPrintf(0, 80, "frame%d,timer%d,Damage%d", frame_, timer_);
+	//Novice::ScreenPrintf(0, 180, "ExplosionFlag_%d,ExplosionFrame%d,ExplosionAnimation%d", ExplosionFlag_, ExplosionFrame, ExplosionAnimation);
 }
 
 void Enemy::SharkAttack() {
