@@ -179,10 +179,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				//難易度：イージー
 				if (Novice::IsTriggerButton(0, kPadButton12)) {
 					sound.ButtonFrag = true;
-					if (sound.ButtonFrag == true) {
-						Novice::PlayAudio(Button, false, 1.0f);
-						sound.ButtonFrag = false;
-					}
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
@@ -197,7 +193,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				//難易度：ノーマル
 				if (Novice::IsTriggerButton(0, kPadButton13)) {
 					sound.ButtonFrag = true;
-					
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
@@ -212,10 +207,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 				//難易度：ハード
 				if (Novice::IsTriggerButton(0, kPadButton11)) {
-					    if (sound.ButtonFrag == true) {
-						Novice::PlayAudio(Button, false, 1.0f);
-						sound.ButtonFrag = false;
-					    }
+					    sound.ButtonFrag = true;
 					for (int i = 0; i < Enemys; i++) {
 						enemy[i]->Initialize();
 						player[i]->Initialize(); // Player初期化
@@ -572,6 +564,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 										    enemyHP -= 1;
 											if (enemyHP >= 1) {
 												enemy[0]->ExplosionFlag();
+											    sound.BommFrag = true;
 											}
 									    } else {
 										    playerHP -= 1;
@@ -585,6 +578,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 										    enemyHP -= 1;
 											if (enemyHP >= 1) {
 												enemy[0]->ExplosionFlag();
+											    sound.BommFrag = true;
 											}
 									    } else {
 										    playerHP -= 1;
@@ -598,6 +592,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 										    enemyHP -= 1;
 											if (enemyHP >= 1) {
 												enemy[0]->ExplosionFlag();
+											    sound.BommFrag = true;
 											}
 									    } else {
 										    playerHP -= 1;
@@ -646,7 +641,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			    if (GameScene.scene == 3) {
 					Titleanime->GameoverUpdate();
 				    if (sound.GameoverSound == true) {
-					    Novice::PlayAudio(Gameover, false, 1.0f);
+					    Novice::PlayAudio(Gameover, false, 1.5f);
 					    sound.GameoverSound = false;
 				    }
 				    if (Novice::IsTriggerButton(0, kPadButton11)) {
@@ -669,10 +664,20 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			switch (GameScene.scene) {
 			case 0: // タイトル
 				Titleanime->Draw();//タイトルアニメーション
+			    if (sound.ButtonFrag == true) {
+				    Novice::PlayAudio(Button, false, 1.5f);
+				    sound.ButtonFrag = false;
+			    }
+			    
 				Novice::DrawSprite(0, curtainY, curtainimage, 1, 1, 0.0f, WHITE);
 				break;
 			case 1:
 				
+				if (sound.BommFrag == true) {
+				    Novice::PlayAudio(Bomm, false, 1.5f);
+				    sound.BommFrag = false;
+			    }
+
 				if (backGroundNum == 0) {
 					Novice::DrawSprite(0, 0, backGround1, 1, 1, 0.0f, WHITE);
 				} else if (backGroundNum == 1) {
